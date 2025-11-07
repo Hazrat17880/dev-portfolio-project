@@ -68,7 +68,7 @@ const BusinessPortfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div className=" bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Header */}
       <header 
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
