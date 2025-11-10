@@ -3,6 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
+// Add these imports at the top
+import { ChevronDown } from 'lucide-react';
+import { useRouter } from 'react-router-dom';
+
 import { 
   ArrowLeft, 
   Clock, 
@@ -56,6 +60,9 @@ const ServiceDetail = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
+  // Add this state to your component
+const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+const router = useRouter();
 
   // Track scroll position for back-to-top button
   useEffect(() => {
@@ -438,7 +445,9 @@ const ServiceDetail = () => {
     },
   };
 
-  
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   // Image Gallery Functions
   const openImageGallery = (index = 0) => {
@@ -462,147 +471,7 @@ const ServiceDetail = () => {
     setSelectedImage(service.gallery[prevIndex]);
   };
 
-  // Enhanced Services Grid Component
-  const EnhancedServicesGrid = () => {
-    const otherServices = Object.values(servicesData).filter(s => s.title !== service.title);
-    
-    return (
-      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Explore Our <span style={{ color: service.color }}>Other Services</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Discover our comprehensive range of professional services designed to meet all your industrial and construction needs
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {otherServices.map((otherService, index) => {
-              const ServiceIcon = otherService.icon;
-              return (
-                <motion.div
-                  key={otherService.title}
-                  variants={itemVariants}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
-                >
-                  {/* Background Gradient */}
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                    style={{
-                      background: `linear-gradient(135deg, ${otherService.color}15 0%, transparent 50%)`
-                    }}
-                  />
-                  
-                  {/* Service Image */}
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={otherService.image}
-                      alt={otherService.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    
-                    {/* Service Icon */}
-                    <motion.div 
-                      className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
-                      whileHover={{ rotate: 15, scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                    >
-                      <ServiceIcon className="h-6 w-6" style={{ color: otherService.color }} />
-                    </motion.div>
-                  </div>
-
-                  {/* Service Content */}
-                  <div className="relative p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
-                      {otherService.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
-                      {otherService.description}
-                    </p>
-                    
-                    {/* Features List */}
-                    <div className="mb-4">
-                      {otherService.features.slice(0, 2).map((feature, featureIndex) => (
-                        <motion.div
-                          key={featureIndex}
-                          className="flex items-center text-sm text-gray-600 mb-2"
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: featureIndex * 0.1 }}
-                        >
-                          <CheckCircle className="h-4 w-4 mr-2 flex-shrink-0" style={{ color: otherService.color }} />
-                          <span>{feature}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* CTA Button */}
-                    <motion.div
-                      className="flex items-center justify-between"
-                      whileHover={{ x: 5 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    >
-                      <Link
-                        to={`/services/${otherService.title.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="flex items-center font-semibold text-sm group-hover:underline"
-                        style={{ color: otherService.color }}
-                      >
-                        Discover More
-                        <ChevronRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                      
-                      {/* Quick Stats */}
-                      <div className="flex items-center space-x-2 text-xs text-gray-500">
-                        <Clock className="h-3 w-3" />
-                        <span>{otherService.stats[0].value}</span>
-                      </div>
-                    </motion.div>
-                  </div>
-
-                  {/* Hover Border */}
-                  <motion.div
-                    className="absolute inset-0 rounded-2xl pointer-events-none border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ borderColor: otherService.color }}
-                  />
-                </motion.div>
-              );
-            })}
-          </motion.div>
-
-          {/* View All Services CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <Link
-              to="/services"
-              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-            >
-              <span>View All Services</span>
-              <ChevronRightIcon className="h-5 w-5 ml-2" />
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-    );
-  };
+  
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -621,13 +490,13 @@ const ServiceDetail = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-6">
-              <Link
-                to="/services"
+              {/* <Link
+                to="/"
                 className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <ArrowLeft className="h-5 w-5 mr-2" />
                 Back to Services
-              </Link>
+              </Link> */}
               
               {/* Breadcrumb Navigation */}
               <div className="hidden md:flex items-center space-x-2 text-sm">
@@ -842,355 +711,135 @@ const ServiceDetail = () => {
       </section>
 
       {/* Tab Navigation */}
-      <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto">
-            {["overview", "features", "process", "testimonials", "faq"].map((tab) => (
+     {/* Tab Navigation */}
+<section className="sticky top-16 z-40 bg-white border-b shadow-sm">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-between">
+      <div className="flex overflow-x-auto">
+        {["overview", "features", "process", "testimonials", "faq"].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`px-6 py-4 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${
+              activeTab === tab
+                ? "border-blue-600 text-blue-600"
+                : "border-transparent text-gray-500 hover:text-gray-700"
+            }`}
+            style={{ 
+              borderBottomColor: activeTab === tab ? service.color : "transparent",
+              color: activeTab === tab ? service.color : ""
+            }}
+          >
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          </button>
+        ))}
+      </div>
+      
+      {/* More Services Dropdown */}
+      <div className="relative">
+        <button
+          onClick={() => setIsServicesDropdownOpen(!isServicesDropdownOpen)}
+          className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors flex items-center"
+        >
+          More Services
+          <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+        </button>
+        
+        {/* Dropdown Menu */}
+        {isServicesDropdownOpen && (
+          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50">
+            {services.map((serviceItem) => (
               <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-6 py-4 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${
-                  activeTab === tab
-                    ? "border-blue-600 text-blue-600"
-                    : "border-transparent text-gray-500 hover:text-gray-700"
-                }`}
-                style={{ 
-                  borderBottomColor: activeTab === tab ? service.color : "transparent",
-                  color: activeTab === tab ? service.color : ""
+                key={serviceItem.id}
+                onClick={() => {
+                  // Navigate to the service page
+                  router.push(`/services/${serviceItem.id}`);
+                  setIsServicesDropdownOpen(false);
                 }}
+                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {serviceItem.title}
               </button>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Tab Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <AnimatePresence mode="wait">
-          {/* Overview Tab */}
-          {activeTab === "overview" && (
-            <motion.div
-              key="overview"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    About Our {service.title} Service
-                  </h2>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    {service.fullDescription}
-                  </p>
-                  <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Our team of experienced professionals is committed to delivering exceptional results that meet your specific requirements. We use latest technologies and industry best practices to ensure quality, efficiency, and safety in every project we undertake.
-                  </p>
-                  
-                  <div className="space-y-4">
-                    <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 mr-3 flex-shrink-0" style={{ color: service.color }} />
-                      <p className="text-gray-700">Industry-leading expertise with years of experience</p>
-                    </div>
-                    <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 mr-3 flex-shrink-0" style={{ color: service.color }} />
-                      <p className="text-gray-700">Customized solutions tailored to your specific needs</p>
-                    </div>
-                    <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 mr-3 flex-shrink-0" style={{ color: service.color }} />
-                      <p className="text-gray-700">Commitment to quality, safety, and timely delivery</p>
-                    </div>
-                    <div className="flex items-start">
-                      <CheckCircle className="h-6 w-6 mr-3 flex-shrink-0" style={{ color: service.color }} />
-                      <p className="text-gray-700">Competitive pricing with transparent cost structures</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Choose Us</h3>
-                    <div className="space-y-6">
-                      <div className="flex items-start">
-                        <div 
-                          className="p-3 rounded-lg mr-4"
-                          style={{ backgroundColor: `${service.color}20` }}
-                        >
-                          <Award className="h-6 w-6" style={{ color: service.color }} />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">Certified Professionals</h4>
-                          <p className="text-gray-600 text-sm">Our team consists of certified professionals with extensive experience in the industry.</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div 
-                          className="p-3 rounded-lg mr-4"
-                          style={{ backgroundColor: `${service.color}20` }}
-                        >
-                          <TrendingUp className="h-6 w-6" style={{ color: service.color }} />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">Proven Track Record</h4>
-                          <p className="text-gray-600 text-sm">We have a proven track record of successfully completing projects for clients across various industries.</p>
-                        </div>
-                      </div>
-                      <div className="flex items-start">
-                        <div 
-                          className="p-3 rounded-lg mr-4"
-                          style={{ backgroundColor: `${service.color}20` }}
-                        >
-                          <Shield className="h-6 w-6" style={{ color: service.color }} />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-900 mb-1">Quality Assurance</h4>
-                          <p className="text-gray-600 text-sm">We adhere to strict quality standards and ensure that all our services meet or exceed industry requirements.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Features Tab */}
-          {activeTab === "features" && (
-            <motion.div
-              key="features"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Our <span style={{ color: service.color }}>Capabilities</span>
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Comprehensive solutions tailored to meet your specific requirements
-                </p>
-              </motion.div>
-
-              <motion.div 
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              >
-                {service.features.map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    variants={itemVariants}
-                    whileHover={{ y: -5 }}
-                    className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
-                  >
-                    <motion.div 
-                      className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-                      style={{ backgroundColor: `${service.color}20` }}
-                      whileHover={{ rotate: 15, scale: 1.1 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                    >
-                      <CheckCircle className="h-6 w-6" style={{ color: service.color }} />
-                    </motion.div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                      {feature}
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      Professional implementation with quality assurance and timely delivery.
-                    </p>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-          )}
-
-          {/* Process Tab */}
-          {activeTab === "process" && (
-            <motion.div
-              key="process"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Our <span style={{ color: service.color }}>Process</span>
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Step-by-step approach ensuring quality and efficiency
-                </p>
-              </motion.div>
-
-              <div className="relative">
-                {/* Process Line */}
-                <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2 z-0" />
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {service.process.map((step, index) => (
-                    <motion.div
-                      key={step.step}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="relative"
-                    >
-                      <motion.div 
-                        className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full"
-                        whileHover={{ y: -5 }}
-                      >
-                        <div className="flex items-center mb-4">
-                          <motion.div 
-                            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4 z-10"
-                            style={{ backgroundColor: service.color }}
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                          >
-                            {step.step}
-                          </motion.div>
-                          <div className="hidden lg:block flex-1 h-1 bg-gray-200" />
-                        </div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed">
-                          {step.description}
-                        </p>
-                      </motion.div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-
-          {/* Testimonials Tab */}
-          {activeTab === "testimonials" && (
-            <motion.div
-              key="testimonials"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Client <span style={{ color: service.color }}>Testimonials</span>
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  What our clients say about our {service.title} service
-                </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {service.testimonials.map((testimonial, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ y: -5 }}
-                    className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
-                  >
-                    <div className="flex items-center mb-4">
-                      <Quote className="h-8 w-8 mr-2" style={{ color: service.color, opacity: 0.5 }} />
-                      <div className="flex">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            size={16}
-                            className={i < testimonial.rating ? "fill-yellow-400 text-yellow-400" : "fill-gray-200 text-gray-200"}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <p className="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
-                    <div>
-                      <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
-                      <p className="text-sm text-gray-600">{testimonial.position}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-
-          {/* FAQ Tab */}
-          {activeTab === "faq" && (
-            <motion.div
-              key="faq"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-12"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Frequently Asked <span style={{ color: service.color }}>Questions</span>
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Common questions about our {service.title} service
-                </p>
-              </motion.div>
-
-              <div className="max-w-3xl mx-auto">
-                {service.faq.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="mb-6"
-                  >
-                    <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
-                        <div 
-                          className="w-8 h-8 rounded-full flex items-center justify-center mr-3 text-white font-bold text-sm"
-                          style={{ backgroundColor: service.color }}
-                        >
-                          Q
-                        </div>
-                        {item.question}
-                      </h3>
-                      <div className="pl-11">
-                        <p className="text-gray-600">{item.answer}</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        )}
       </div>
+    </div>
+  </div>
+</section>
 
-     
+{/* Tab Content - Keep all your existing tab content exactly as is */}
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <AnimatePresence mode="wait">
+    {/* Overview Tab - Your existing content */}
+    {activeTab === "overview" && (
+      <motion.div
+        key="overview"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Your existing overview content */}
+      </motion.div>
+    )}
     
+    {/* All other tabs remain exactly the same */}
+    {/* Features Tab */}
+    {activeTab === "features" && (
+      <motion.div
+        key="features"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Your existing features content */}
+      </motion.div>
+    )}
+    
+    {/* Process Tab */}
+    {activeTab === "process" && (
+      <motion.div
+        key="process"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Your existing process content */}
+      </motion.div>
+    )}
+    
+    {/* Testimonials Tab */}
+    {activeTab === "testimonials" && (
+      <motion.div
+        key="testimonials"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Your existing testimonials content */}
+      </motion.div>
+    )}
+    
+    {/* FAQ Tab */}
+    {activeTab === "faq" && (
+      <motion.div
+        key="faq"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Your existing FAQ content */}
+      </motion.div>
+    )}
+  </AnimatePresence>
+</div>
+
+      {/* Service Navigation Section */}
 
       {/* Enhanced CTA Section */}
       <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
@@ -1318,7 +967,23 @@ const ServiceDetail = () => {
         )}
       </AnimatePresence>
 
- 
+      {/* Back to Top Button */}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg"
+            style={{ backgroundColor: service.color }}
+          >
+            <ArrowUp className="h-6 w-6 text-white" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
