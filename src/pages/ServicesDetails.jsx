@@ -25,22 +25,37 @@ import {
   Star,
   Calendar,
   Award,
-  TrendingUp
+  TrendingUp,
+  Grid3X3,
+  Maximize2,
+  X,
+  ChevronLeft,
+  ChevronRight as ChevronRightIcon
 } from "lucide-react";
 
 // Import service images
-import service1 from "../assets/Images/services1.jpg"
+import service1 from "../assets/Images/services1.jpg";
 import service4 from "../assets/Images/services4.jpg";
 import service11 from "../assets/Images/service11.jpg";
 import service9 from "../assets/Images/services9.jpg";
 import service5 from "../assets/Images/services5.jpg";
 import service6 from "../assets/Images/services6.jpg";
 
+// Import additional gallery images
+import gallery1 from "../assets/Images/gallery1.jpg";
+import gallery2 from "../assets/Images/gallery2.jpg";
+import gallery3 from "../assets/Images/gallery3.jpg";
+import gallery4 from "../assets/Images/gallery4.jpeg";
+import gallery5 from "../assets/Images/gallery5.jpg";
+import gallery6 from "../assets/Images/gallery6.jpg";
+
 const ServiceDetail = () => {
   const { serviceId } = useParams();
   const [activeTab, setActiveTab] = useState("overview");
   const [scrollY, setScrollY] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   // Track scroll position for back-to-top button
   useEffect(() => {
@@ -53,15 +68,16 @@ const ServiceDetail = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Service data matching the main services section with updated color scheme
+  // Service data matching main services section with updated color scheme
   const servicesData = {
     "civil-construction": {
       title: "Civil Construction",
       description: "High-quality construction services for factories, warehouses, and large-scale facilities with precise engineering and project management.",
       fullDescription: "We specialize in comprehensive civil construction services for industrial facilities, commercial buildings, and large-scale infrastructure projects. Our team of experienced engineers and construction professionals ensures every project meets the highest standards of quality, safety, and efficiency.",
       image: service1,
+      gallery: [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6],
       icon: Hammer,
-      color: "#d97706", // Darker amber for a more industrial feel
+      color: "#d97706",
       features: [
         "Structural Design & Engineering",
         "Project Management & Planning",
@@ -113,8 +129,9 @@ const ServiceDetail = () => {
       description: "Professional welding solutions with advanced techniques and certified welders ensuring durable, safe, and reliable joints.",
       fullDescription: "Our certified welding services utilize state-of-the-art equipment and techniques including TIG, MIG, and arc welding. We serve various industries with precision welding for structural steel, pipelines, machinery, and custom fabrication projects.",
       image: service4,
+      gallery: [gallery2, gallery3, gallery4, gallery5, gallery1, gallery6],
       icon: Zap,
-      color: "#475569", // Blue-gray to represent metal/steel instead of red
+      color: "#475569",
       features: [
         "TIG/MIG/Arc Welding",
         "Stainless Steel & Aluminum",
@@ -166,8 +183,9 @@ const ServiceDetail = () => {
       description: "Comprehensive fire protection systems design, installation, and maintenance to meet industrial safety standards.",
       fullDescription: "We design, install, and maintain complete fire protection systems for industrial facilities, commercial buildings, and residential complexes. Our solutions include fire detection, alarm systems, suppression systems, and emergency response planning.",
       image: service11,
+      gallery: [gallery3, gallery4, gallery5, gallery6, gallery1, gallery2],
       icon: Flame,
-      color: "#1e40af", // Deep blue to represent safety/protection instead of red
+      color: "#1e40af",
       features: [
         "Fire Detection Systems",
         "Alarm & Notification Systems",
@@ -193,7 +211,7 @@ const ServiceDetail = () => {
         {
           name: "Robert Taylor",
           position: "Safety Director, Manufacturing Plus",
-          content: "Their firefighting systems have given us peace of mind. The installation was professional and the ongoing support is excellent.",
+          content: "Their firefighting systems have given us peace of mind. The installation was professional and ongoing support is excellent.",
           rating: 5
         },
         {
@@ -219,8 +237,9 @@ const ServiceDetail = () => {
       description: "Integrated security and electrical systems providing smart, efficient, and complete facility management solutions.",
       fullDescription: "We provide integrated security and electrical solutions including CCTV surveillance, access control systems, electrical wiring, power distribution, and smart building automation for enhanced safety and efficiency.",
       image: service9,
+      gallery: [gallery4, gallery5, gallery6, gallery1, gallery2, gallery3],
       icon: SecurityShield,
-      color: "#2563eb", // Slightly darker blue for a more professional look
+      color: "#2563eb",
       features: [
         "CCTV Surveillance Systems",
         "Access Control Solutions",
@@ -252,7 +271,7 @@ const ServiceDetail = () => {
         {
           name: "Jennifer Martinez",
           position: "Operations Manager, Logistics Hub",
-          content: "Their smart automation solutions have improved our efficiency significantly. The installation was smooth and the support is outstanding.",
+          content: "Their smart automation solutions have improved our efficiency significantly. The installation was smooth and support is outstanding.",
           rating: 5
         }
       ],
@@ -272,8 +291,9 @@ const ServiceDetail = () => {
       description: "Surface preparation and protective coating services to extend equipment lifespan and prevent corrosion in harsh environments.",
       fullDescription: "Our sandblasting and coating services protect industrial equipment, structures, and machinery from corrosion, wear, and environmental damage. We use advanced techniques and high-quality materials for long-lasting protection.",
       image: service5,
+      gallery: [gallery5, gallery6, gallery1, gallery2, gallery3, gallery4],
       icon: Droplets,
-      color: "#64748b", // Gray-blue to represent industrial surfaces instead of purple
+      color: "#64748b",
       features: [
         "Surface Preparation",
         "Abrasive Blasting",
@@ -311,8 +331,8 @@ const ServiceDetail = () => {
       ],
       faq: [
         {
-          question: "How long does the coating protection last?",
-          answer: "Depending on the coating system and environmental conditions, our protective coatings typically last 5-10 years before requiring maintenance."
+          question: "How long does coating protection last?",
+          answer: "Depending on coating system and environmental conditions, our protective coatings typically last 5-10 years before requiring maintenance."
         },
         {
           question: "Do you offer mobile sandblasting services?",
@@ -325,8 +345,9 @@ const ServiceDetail = () => {
       description: "Reliable manpower solutions providing skilled, certified professionals for industrial operations and project requirements.",
       fullDescription: "We provide skilled manpower solutions for various industrial sectors including construction, manufacturing, maintenance, and operations. Our workforce includes certified professionals, technicians, and skilled laborers ready to meet your project needs.",
       image: service6,
+      gallery: [gallery6, gallery1, gallery2, gallery3, gallery4, gallery5],
       icon: ManpowerUsers,
-      color: "#059669", // Darker green for a more professional look
+      color: "#059669",
       features: [
         "Skilled Professionals",
         "Certified Technicians",
@@ -358,7 +379,7 @@ const ServiceDetail = () => {
         {
           name: "Patricia Lee",
           position: "Project Manager, Construction Plus",
-          content: "We've used their temporary staffing for multiple projects. The quality of personnel and the support they provide is exceptional.",
+          content: "We've used their temporary staffing for multiple projects. The quality of personnel and support they provide is exceptional.",
           rating: 5
         }
       ],
@@ -382,9 +403,9 @@ const ServiceDetail = () => {
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Service Not Found</h2>
-          {/* <Link to="/services" className="text-blue-600 hover:text-blue-800">
+          <Link to="/services" className="text-blue-600 hover:text-blue-800">
             Back to Services
-          </Link> */}
+          </Link>
         </div>
       </div>
     );
@@ -417,8 +438,170 @@ const ServiceDetail = () => {
     },
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  
+
+  // Image Gallery Functions
+  const openImageGallery = (index = 0) => {
+    setSelectedImage(service.gallery[index]);
+    setGalleryIndex(index);
+  };
+
+  const closeImageGallery = () => {
+    setSelectedImage(null);
+  };
+
+  const nextImage = () => {
+    const nextIndex = (galleryIndex + 1) % service.gallery.length;
+    setGalleryIndex(nextIndex);
+    setSelectedImage(service.gallery[nextIndex]);
+  };
+
+  const prevImage = () => {
+    const prevIndex = (galleryIndex - 1 + service.gallery.length) % service.gallery.length;
+    setGalleryIndex(prevIndex);
+    setSelectedImage(service.gallery[prevIndex]);
+  };
+
+  // Enhanced Services Grid Component
+  const EnhancedServicesGrid = () => {
+    const otherServices = Object.values(servicesData).filter(s => s.title !== service.title);
+    
+    return (
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Explore Our <span style={{ color: service.color }}>Other Services</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Discover our comprehensive range of professional services designed to meet all your industrial and construction needs
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {otherServices.map((otherService, index) => {
+              const ServiceIcon = otherService.icon;
+              return (
+                <motion.div
+                  key={otherService.title}
+                  variants={itemVariants}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
+                >
+                  {/* Background Gradient */}
+                  <div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: `linear-gradient(135deg, ${otherService.color}15 0%, transparent 50%)`
+                    }}
+                  />
+                  
+                  {/* Service Image */}
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={otherService.image}
+                      alt={otherService.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    
+                    {/* Service Icon */}
+                    <motion.div 
+                      className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                      whileHover={{ rotate: 15, scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 10 }}
+                    >
+                      <ServiceIcon className="h-6 w-6" style={{ color: otherService.color }} />
+                    </motion.div>
+                  </div>
+
+                  {/* Service Content */}
+                  <div className="relative p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-800 transition-colors">
+                      {otherService.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 line-clamp-2 leading-relaxed">
+                      {otherService.description}
+                    </p>
+                    
+                    {/* Features List */}
+                    <div className="mb-4">
+                      {otherService.features.slice(0, 2).map((feature, featureIndex) => (
+                        <motion.div
+                          key={featureIndex}
+                          className="flex items-center text-sm text-gray-600 mb-2"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: featureIndex * 0.1 }}
+                        >
+                          <CheckCircle className="h-4 w-4 mr-2 flex-shrink-0" style={{ color: otherService.color }} />
+                          <span>{feature}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* CTA Button */}
+                    <motion.div
+                      className="flex items-center justify-between"
+                      whileHover={{ x: 5 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    >
+                      <Link
+                        to={`/services/${otherService.title.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="flex items-center font-semibold text-sm group-hover:underline"
+                        style={{ color: otherService.color }}
+                      >
+                        Discover More
+                        <ChevronRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                      
+                      {/* Quick Stats */}
+                      <div className="flex items-center space-x-2 text-xs text-gray-500">
+                        <Clock className="h-3 w-3" />
+                        <span>{otherService.stats[0].value}</span>
+                      </div>
+                    </motion.div>
+                  </div>
+
+                  {/* Hover Border */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl pointer-events-none border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ borderColor: otherService.color }}
+                  />
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* View All Services CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <Link
+              to="/services"
+              className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-800 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+            >
+              <span>View All Services</span>
+              <ChevronRightIcon className="h-5 w-5 ml-2" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+    );
   };
 
   return (
@@ -438,13 +621,13 @@ const ServiceDetail = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-6">
-              {/* <Link
+              <Link
                 to="/services"
                 className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
               >
                 <ArrowLeft className="h-5 w-5 mr-2" />
                 Back to Services
-              </Link> */}
+              </Link>
               
               {/* Breadcrumb Navigation */}
               <div className="hidden md:flex items-center space-x-2 text-sm">
@@ -476,7 +659,7 @@ const ServiceDetail = () => {
         </div>
       </motion.nav>
 
-      {/* Hero Section with Parallax Effect */}
+      {/* Hero Section with Improved Image Gallery */}
       <section className="relative overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
@@ -576,37 +759,82 @@ const ServiceDetail = () => {
               </div>
             </motion.div>
 
-            {/* Image with 3D Effect */}
+            {/* Improved Image Gallery Layout */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="relative"
-              style={{ perspective: "1000px" }}
+              className="relative h-96"
             >
+              {/* Main Featured Image */}
               <motion.div
-                className="relative"
-                whileHover={{ rotateY: 5, rotateX: 5 }}
-                transition={{ type: "spring", stiffness: 100, damping: 10 }}
-                style={{ transformStyle: "preserve-3d" }}
+                className="absolute top-0 right-0 w-2/3 h-2/3 rounded-2xl shadow-2xl overflow-hidden z-20 cursor-pointer"
+                whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                onClick={() => openImageGallery(0)}
               >
                 <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-96 object-cover rounded-2xl shadow-2xl"
+                  src={service.gallery[0]}
+                  alt={`${service.title} Main Project`}
+                  className="w-full h-full object-cover"
                 />
-                <div 
-                  className="absolute inset-0 rounded-2xl border-2 opacity-20"
-                  style={{ borderColor: service.color }}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div className="p-4 text-white">
+                    <h3 className="font-semibold">Featured Project</h3>
+                    <p className="text-sm opacity-90">Click to explore</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Secondary Images Grid */}
+              <div className="absolute bottom-0 left-0 w-2/3 h-1/3 grid grid-cols-2 gap-2">
+                {service.gallery.slice(1, 3).map((image, index) => (
+                  <motion.div
+                    key={index}
+                    className="relative rounded-xl shadow-lg overflow-hidden cursor-pointer"
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                    onClick={() => openImageGallery(index + 1)}
+                  >
+                    <img
+                      src={image}
+                      alt={`${service.title} Project ${index + 2}`}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <Maximize2 className="h-6 w-6 text-white" />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Third Image - Overlapping */}
+              <motion.div
+                className="absolute top-4 left-1/2 w-1/3 h-1/3 rounded-xl shadow-xl overflow-hidden cursor-pointer z-30"
+                whileHover={{ scale: 1.08, rotate: 2 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                onClick={() => openImageGallery(3)}
+              >
+                <img
+                  src={service.gallery[3]}
+                  alt={`${service.title} Project 4`}
+                  className="w-full h-full object-cover"
                 />
-                <motion.div 
-                  className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent rounded-b-2xl"
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p className="text-white text-sm font-medium">Click to view gallery</p>
-                </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-start justify-end">
+                  <div className="p-2">
+                    <Maximize2 className="h-4 w-4 text-white" />
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Gallery Badge */}
+              <motion.div
+                className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold shadow-lg z-40"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                {service.gallery.length} Photos
               </motion.div>
             </motion.div>
           </div>
@@ -961,64 +1189,8 @@ const ServiceDetail = () => {
         </AnimatePresence>
       </div>
 
-      {/* Related Services Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Related <span style={{ color: service.color }}>Services</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our other services that might interest you
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {Object.values(servicesData)
-              .filter(s => s.title !== service.title)
-              .slice(0, 3)
-              .map((relatedService, index) => (
-                <motion.div
-                  key={relatedService.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="bg-gray-50 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
-                >
-                  <div className="h-48 overflow-hidden">
-                    <img
-                      src={relatedService.image}
-                      alt={relatedService.title}
-                      className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                      {relatedService.title}
-                    </h3>
-                    <p className="text-gray-600 mb-4 line-clamp-2">
-                      {relatedService.description}
-                    </p>
-                    <Link
-                      to={`/services/${relatedService.title.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors"
-                      style={{ color: relatedService.color }}
-                    >
-                      Learn More
-                      <ChevronRight className="h-4 w-4 ml-1" />
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
-          </div>
-        </div>
-      </section>
+     
+    
 
       {/* Enhanced CTA Section */}
       <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
@@ -1032,7 +1204,7 @@ const ServiceDetail = () => {
           />
         </div>
 
-        {/* <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1078,26 +1250,75 @@ const ServiceDetail = () => {
               </div>
             </div>
           </motion.div>
-        </div> */}
+        </div>
       </section>
 
-      {/* Back to Top Button */}
+      {/* Image Modal */}
       <AnimatePresence>
-        {showBackToTop && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={scrollToTop}
-            className="fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg"
-            style={{ backgroundColor: service.color }}
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+            onClick={closeImageGallery}
           >
-            <ArrowUp className="h-6 w-6 text-white" />
-          </motion.button>
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="relative max-w-6xl max-h-full"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedImage}
+                alt="Gallery Image"
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
+              
+              {/* Navigation Buttons */}
+              {service.gallery.length > 1 && (
+                <>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                  >
+                    <ChevronLeft className="h-6 w-6 text-gray-700" />
+                  </motion.button>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                  >
+                    <ChevronRight className="h-6 w-6 text-gray-700" />
+                  </motion.button>
+                </>
+              )}
+              
+              {/* Close Button */}
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={closeImageGallery}
+                className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+              >
+                <X className="h-6 w-6 text-gray-700" />
+              </motion.button>
+              
+              {/* Image Counter */}
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                {galleryIndex + 1} / {service.gallery.length}
+              </div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
+
+ 
     </div>
   );
 };

@@ -127,7 +127,7 @@ const AboutPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              About <span className="text-blue-600">Startup</span>
+              About  Our <span className="text-blue-600">Startup</span>
             </motion.h1>
             
             <motion.p 

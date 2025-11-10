@@ -9,6 +9,7 @@ import Footer from './Components/Common/Footer';
 import Services from './pages/Services';
 import AboutPage from './pages/Aboutus';
 import ContactPage from './pages/Contactus';
+import "./i18n"
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home/>} />  
-        <Route path="/services" element={<Services/>} />  
+        {/* <Route path="/services" element={<Services/>} />   */}
         <Route path="/about-us" element={<AboutPage/>} />  
         <Route path="/contact-us" element={<ContactPage/>} />  
          <Route path="/services/:serviceId" element={<ServicesDetails />} />

@@ -23,10 +23,10 @@ import {
 } from "lucide-react";
 
 // Import images
-import contactHero from "../assets/Images/contactus/contacthero.jpg";
-import office1 from "../assets/Images/contactus/o1.jpg";
-import office2 from "../assets/Images/contactus/o2.jpg";
-import office3 from "../assets/Images/contactus/o3.jpg";
+import contactHero from "../assets/Images/Contactus/contacthero.jpg";
+import office1 from "../assets/Images/Contactus/o1.jpg";
+import office2 from "../assets/Images/Contactus/o2.jpg";
+import office3 from "../assets/Images/Contactus/o3.jpg";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -135,7 +135,7 @@ const ContactPage = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden mt-24">
         <div className="absolute inset-0">
           <img
             src={contactHero}
@@ -152,15 +152,7 @@ const ContactPage = () => {
             transition={{ duration: 0.8 }}
             className="text-center text-white"
           >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="inline-flex items-center px-6 py-3 mb-8 text-sm font-medium bg-white/10 border border-white/20 rounded-full backdrop-blur-sm"
-            >
-              <MapPin className="w-5 h-5 mr-2" />
-              Get in Touch With Our Team
-            </motion.div>
+           
             
             <motion.h1 
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"

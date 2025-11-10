@@ -377,7 +377,7 @@ const TestimonialSection = () => {
           >
             Trusted by Industry{" "}
             <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Leaders
+              Clients
             </span>
           </motion.h2>
           
@@ -395,60 +395,14 @@ const TestimonialSection = () => {
 
         {/* Testimonials Slider */}
         {/* <div className="relative"> */}
-          {/* Navigation Arrows */}
-          {/* <button
-            onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 bg-white rounded-full p-3 shadow-md hover:shadow-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Previous testimonials"
-            disabled={currentIndex === 0}
-          >
-            <ChevronLeft className="h-5 w-5 text-gray-600" />
-          </button>
           
-          <button
-            onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 bg-white rounded-full p-3 shadow-md hover:shadow-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Next testimonials"
-            disabled={currentIndex >= testimonials.length - itemsPerPage}
-          >
-            <ChevronRight className="h-5 w-5 text-gray-600" />
-          </button> */}
+          
+        
 
-          {/* Slider Container */}
-          {/* <div className="overflow-hidden px-2">
-            <AnimatePresence initial={false} mode="popLayout" custom={direction}>
-              <motion.div
-                key={currentIndex}
-                custom={direction}
-                variants={sliderVariants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-              >
-                {getCurrentTestimonials().map((testimonial) => (
-                  <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-                ))}
-              </motion.div>
-            </AnimatePresence>
-          </div> */}
+        
+         
 
-          {/* Dots Navigation */}
-          {/* <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: totalSlides }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
-                  index === Math.floor(currentIndex / itemsPerPage)
-                    ? "w-8 bg-blue-600"
-                    : "w-2 bg-gray-300 hover:bg-gray-400"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div> */}
-        {/* </div> */}
+        
 
         {/* Client Logos Section */}
         <motion.div

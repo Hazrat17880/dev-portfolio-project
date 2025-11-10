@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Flame, Zap, Shield, Hammer, Droplets, Users } from "lucide-react";
-import service1 from "../../assets/Images/services1.jpg";
+import { Flame, Zap, Shield, Hammer, Droplets, Users } from "lucide-react";
+import service1 from "../../assets/Images/services1.jpeg";
 import service4 from "../../assets/Images/services4.jpg";
 import service11 from "../../assets/Images/service11.jpg";
 import service9 from "../../assets/Images/services9.jpg";
@@ -15,8 +15,6 @@ const ServicesSection = () => {
   const services = [
     {
       title: "Civil Construction",
-      description:
-        "High-quality construction services for factories, warehouses, and large-scale facilities with precise engineering and project management.",
       image: service1,
       link: "/services/civil-construction",
       animationType: "construction",
@@ -25,8 +23,6 @@ const ServicesSection = () => {
     },
     {
       title: "Welding Services",
-      description:
-        "Professional welding solutions with advanced techniques and certified welders ensuring durable, safe, and reliable joints.",
       image: service4,
       link: "/services/welding",
       animationType: "sparks",
@@ -35,8 +31,6 @@ const ServicesSection = () => {
     },
     {
       title: "Firefighting Systems",
-      description:
-        "Comprehensive fire protection systems design, installation, and maintenance to meet industrial safety standards.",
       image: service11,
       link: "/services/firefighting",
       animationType: "fire",
@@ -45,8 +39,6 @@ const ServicesSection = () => {
     },
     {
       title: "Security & Electrical",
-      description:
-        "Integrated security and electrical systems providing smart, efficient, and complete facility management solutions.",
       image: service9,
       link: "/services/security-electrical",
       animationType: "electrical",
@@ -55,8 +47,6 @@ const ServicesSection = () => {
     },
     {
       title: "Sandblasting & Coating",
-      description:
-        "Surface preparation and protective coating services to extend equipment lifespan and prevent corrosion in harsh environments.",
       image: service5,
       link: "/services/sandblasting-coating",
       animationType: "coating",
@@ -65,8 +55,6 @@ const ServicesSection = () => {
     },
     {
       title: "Manpower Solutions",
-      description:
-        "Reliable manpower solutions providing skilled, certified professionals for industrial operations and project requirements.",
       image: service6,
       link: "/services/manpower-rental",
       animationType: "manpower",
@@ -112,8 +100,26 @@ const ServicesSection = () => {
     hover: { scale: 1.05, transition: { duration: 0.4, ease: "easeOut" } },
   };
 
-  const contentVariants = {
-    hover: { y: -2, transition: { duration: 0.3 } },
+  // Character animation variants - Changed from y-axis to x-axis
+  const characterVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -20,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100
+      }
+    },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100
+      }
+    },
   };
 
   // Spark Generator for Welding
@@ -147,9 +153,9 @@ const ServicesSection = () => {
       >
         <Link to={service.link} className="group block h-full">
           <div className="relative h-full overflow-hidden border border-gray-200 bg-white rounded-xl shadow-md hover:shadow-2xl transition-shadow duration-300">
-            {/* Image Container */}
+            {/* Image Container - Full Height */}
             <motion.div 
-              className="relative h-56 overflow-hidden" 
+              className="relative h-80 overflow-hidden" 
               variants={imageVariants}
             >
               <img
@@ -158,8 +164,45 @@ const ServicesSection = () => {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               
-              {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Overlay Gradient - Stronger at bottom for title visibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Title Container - Bottom Left */}
+              <motion.div 
+                className="absolute bottom-0 left-0 right-0 p-6"
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: isHovered ? 1 : 0
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-xl md:text-2xl font-bold text-white overflow-hidden text-left">
+                  {isHovered && (
+                    <motion.div
+                      initial="hidden"
+                      animate="visible"
+                      variants={{
+                        visible: {
+                          transition: {
+                            staggerChildren: 0.05,
+                            delayChildren: 0.1
+                          }
+                        }
+                      }}
+                    >
+                      {service.title.split("").map((char, i) => (
+                        <motion.span
+                          key={i}
+                          variants={characterVariants}
+                          className="inline-block"
+                        >
+                          {char === " " ? "\u00A0" : char}
+                        </motion.span>
+                      ))}
+                    </motion.div>
+                  )}
+                </h3>
+              </motion.div>
               
               {/* Service Icon Badge */}
               <motion.div
@@ -365,26 +408,6 @@ const ServicesSection = () => {
               )}
             </motion.div>
 
-            {/* Card Content */}
-            <motion.div className="p-6" variants={contentVariants}>
-              <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-blue-700 transition-colors duration-300">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 text-sm mb-4 line-clamp-3 group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">
-                {service.description}
-              </p>
-              
-              {/* Call-to-Action */}
-              <motion.div
-                className="flex items-center text-blue-600 font-semibold text-sm"
-                whileHover={{ x: 4 }}
-                transition={{ type: "spring", stiffness: 400, damping: 12 }}
-              >
-                <span className="mr-2">Learn More</span>
-                <ArrowRight className="h-4 w-4" />
-              </motion.div>
-            </motion.div>
-
             {/* Colored Border on Hover */}
             <motion.div
               className="absolute inset-0 rounded-xl pointer-events-none"
@@ -420,9 +443,9 @@ const ServicesSection = () => {
         }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-20">
         {/* Section Header */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -451,7 +474,7 @@ const ServicesSection = () => {
             Delivering world-class industrial and construction services with innovation, 
             precision, and reliability that drive long-term value for every client.
           </motion.p>
-        </motion.div>
+        </motion.div> */}
 
         {/* Services Grid */}
         <motion.div
@@ -467,7 +490,7 @@ const ServicesSection = () => {
         </motion.div>
 
         {/* Call to Action */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -480,11 +503,11 @@ const ServicesSection = () => {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-10 py-4  font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-r from-blue-600 to-blue-800 text-white px-10 py-4 font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             Get Free Consultation
           </motion.button>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

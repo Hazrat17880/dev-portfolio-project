@@ -1,0 +1,89 @@
+{
+  "navbar": {
+    "home": "Home",
+
+    "aboutUs": "About Us",
+    "contact": "Contact"
+  },
+  "footer": {
+    "home": "Home",
+    "aboutUs": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact",
+    "service1": "Civil Construction",
+    "service2": "Welding Services",
+    "service3": "Firefighting Systems",
+    "service4": "Security & Electrical",
+    "service5": "Sandblasting & Coating",
+    "service6": "Manpower Rental",
+    "newsletter": "Subscribe to our newsletter for updates",
+    "emailPlaceholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "isoTitle": "ISO 9001 Certified",
+    "isoDesc": "Quality Management",
+    "companyName": "A1 Contructing",
+    "tagline": "Industrial Excellence",
+    "description": "Leading industrial construction company with over 15 years of experience in delivering high-quality construction, safety systems, and maintenance solutions across various industries.",
+    "phone": "+971 4 123 4567",
+    "email": "info@constructpro.ae",
+    "address": "Dubai Industrial Park\nPlot 123, Street 45\nDubai, UAE",
+    "hours": "Sun - Thu: 8:00 AM - 6:00 PM",
+    "mapTitle": "ConstructPro Location",
+    "getDirections": "Get Directions",
+    "quickLinks": "Quick Links",
+    "ourServices": "Our Services",
+    "stayUpdated": "Stay Updated",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "sitemap": "Sitemap",
+    "contactUs": "Contact Us"
+  },
+  "hero": {
+    "buildingTheFuture": "Building The Future With",
+    "strength": "Strength",
+    "innovation": "Innovation",
+    "subtitle": "Delivering world-class industrial construction solutions that empower progress, reliability, and long-term growth.",
+    "getQuote": "Get a Quote",
+    "ourServices": "Our Services"
+  },
+  
+  "services": {
+    "sectionTitle": "Our Services",
+    "sectionSubtitle": "Delivering world-class industrial and construction services with innovation, precision, and reliability that drive long-term value for every client.",
+    "service1": {
+      "title": "Civil Construction",
+      "description": "High-quality construction services for factories, warehouses, and large-scale facilities with precise engineering and project management."
+    },
+    "service2": {
+      "title": "Welding Services",
+      "description": "Professional welding solutions with advanced techniques and certified welders ensuring durable, safe, and reliable joints."
+    },
+    "service3": {
+      "title": "Firefighting Systems",
+      "description": "Comprehensive fire protection systems design, installation, and maintenance to meet industrial safety standards."
+    },
+    "service4": {
+      "title": "Security & Electrical",
+      "description": "Integrated security and electrical systems providing smart, efficient, and complete facility management solutions."
+    },
+    "service5": {
+      "title": "Sandblasting & Coating",
+      "description": "Surface preparation and protective coating services to extend equipment lifespan and prevent corrosion in harsh environments."
+    },
+    "service6": {
+      "title": "Manpower Solutions",
+      "description": "Reliable manpower solutions providing skilled, certified professionals for industrial operations and project requirements."
+    },
+    "ctaText": "Looking for a custom solution tailored to your business needs?",
+    "ctaButton": "Get Free Consultation",
+    "learnMore": "Learn More"
+  }
+ 
+     
+  
+
+
+
+}
