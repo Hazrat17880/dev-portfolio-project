@@ -105,23 +105,34 @@ const Navbar = () => {
             : 'bg-white/90 backdrop-blur-sm shadow-sm'
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 lg:h-20">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-2">
+          <div className="flex justify-between items-center h-24 lg:h-24 py-3">
             
-            {/* Logo */}
-            <div 
-              className="flex items-center cursor-pointer group"
-              onClick={() => handleNavClick('home')}
-            >
-              <div className="relative h-10 w-32 sm:h-12 sm:w-40 lg:h-14 lg:w-48 rounded-lg overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5">
-                <img 
-                  src={LogoImage} 
-                  alt="Company Logo"
-                  className="w-full h-full object-contain"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-500 ease-out"></div>
-              </div>
-            </div>
+            {/* Logo - Redesigned according to client requirements */}
+          <div
+  className="flex flex-col items-center cursor-pointer group text-center px-2"
+  onClick={() => handleNavClick('home')}
+>
+  {/* Logo at the top */}
+  <div className="relative h-14 w-14 sm:h-16 sm:w-16 lg:h-14 lg:w-14 rounded-lg overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5">
+    <img
+      src={LogoImage}
+      alt="Company Logo"
+      className="w-full h-full object-contain mt-2"
+    />
+  </div>
+
+  {/* Text directly under the logo */}
+  <div className="flex flex-col items-center leading-tight mt-0">
+    <h1 className="text-md sm:text-xl font-bold text-gray-900 mt-0 mb-0">
+      شركة وحيد لبنان
+    </h1>
+    <h2 className="text-md sm:text-xl font-bold text-blue-900 mt-0">
+      A1 CONTRUCT
+    </h2>
+  </div>
+</div>
+
 
             {/* Desktop Navigation */}
             <ul className="hidden lg:flex items-center gap-8">
@@ -143,47 +154,45 @@ const Navbar = () => {
                 </li>
               ))}
               
-              {/* Language Switcher */}
-        {/* Desktop Language Switcher */}
-<li className="relative" ref={dropdownRef}>
-  <button
-    onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
-    className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-medium text-sm shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group overflow-hidden"
-  >
-    <img 
-      src={`https://flagcdn.com/w20/${currentLang.flag}.png`} 
-      alt={currentLang.name}
-      className="w-5 h-5 rounded-full border-2 border-white/30"
-    />
-    <span>{currentLang.code.toUpperCase()}</span>
-    <FaChevronDown className={`text-xs transition-transform duration-300 ${
-      isLangDropdownOpen ? 'rotate-180' : ''
-    }`} />
-  </button>
-  
-  {/* Dropdown */}
-  <div className={`absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 w-32 ${
-    isLangDropdownOpen 
-      ? 'opacity-100 visible translate-y-0' 
-      : 'opacity-0 invisible -translate-y-2'
-  }`}>
-    {languages.map((lang) => (
-      <button
-        key={lang.code}
-        onClick={() => handleLanguageChange(lang)}
-        className="flex items-center gap-3 w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-500 transition-colors duration-200"
-      >
-        <img 
-          src={`https://flagcdn.com/w20/${lang.flag}.png`} 
-          alt={lang.name}
-          className="w-5 h-5 rounded-full"
-        />
-        <span>{lang.name}</span>
-      </button>
-    ))}
-  </div>
-</li>
-
+              {/* Desktop Language Switcher */}
+              <li className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-full font-medium text-sm shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 group overflow-hidden"
+                >
+                  <img 
+                    src={`https://flagcdn.com/w20/${currentLang.flag}.png`} 
+                    alt={currentLang.name}
+                    className="w-5 h-5 rounded-full border-2 border-white/30"
+                  />
+                  <span>{currentLang.code.toUpperCase()}</span>
+                  <FaChevronDown className={`text-xs transition-transform duration-300 ${
+                    isLangDropdownOpen ? 'rotate-180' : ''
+                  }`} />
+                </button>
+                
+                {/* Dropdown */}
+                <div className={`absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl overflow-hidden transition-all duration-300 w-32 ${
+                  isLangDropdownOpen 
+                    ? 'opacity-100 visible translate-y-0' 
+                    : 'opacity-0 invisible -translate-y-2'
+                }`}>
+                  {languages.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => handleLanguageChange(lang)}
+                      className="flex items-center gap-3 w-full px-4 py-3 text-left text-gray-700 hover:bg-blue-50 hover:text-blue-500 transition-colors duration-200"
+                    >
+                      <img 
+                        src={`https://flagcdn.com/w20/${lang.flag}.png`} 
+                        alt={lang.name}
+                        className="w-5 h-5 rounded-full"
+                      />
+                      <span>{lang.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </li>
             </ul>
 
             {/* Mobile Menu Toggle */}
