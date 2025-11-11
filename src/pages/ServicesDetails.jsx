@@ -45,13 +45,44 @@ import service9 from "../assets/Images/services9.jpg";
 import service5 from "../assets/Images/services5.jpg";
 import service6 from "../assets/Images/services6.jpg";
 
-// Import additional gallery images
+// Import additional gallery images (for fallback)
 import gallery1 from "../assets/Images/gallery1.jpg";
 import gallery2 from "../assets/Images/gallery2.jpg";
 import gallery3 from "../assets/Images/gallery3.jpg";
 import gallery4 from "../assets/Images/gallery4.jpeg";
 import gallery5 from "../assets/Images/gallery5.jpg";
 import gallery6 from "../assets/Images/gallery6.jpg";
+
+// fire fighting 
+import F1 from "../assets/Images/fire/f1.jpg"
+import F2 from "../assets/Images/fire/f2.jpg"
+import F3 from "../assets/Images/fire/f3.jpg"
+import F4 from "../assets/Images/fire/f4.jpg"
+
+// manpower
+import M1 from "../assets/Images/manpower/m1.jpg";
+import M2 from "../assets/Images/manpower/m2.jpg";
+import M3 from "../assets/Images/manpower/m3.jpg";
+import M4 from "../assets/Images/manpower/m4.jpg";
+
+// sandblasting
+import s1 from "../assets/Images/sandblasting/s1.jpg";
+import s2 from "../assets/Images/sandblasting/s2.jpg";
+import s3 from "../assets/Images/sandblasting/s3.jpg";
+import s4 from "../assets/Images/sandblasting/s4.jpg";
+
+/// wellding images
+import w1 from "../assets/Images/Wellding/w1.jpg"
+import w2 from "../assets/Images/Wellding/w2.jpg"
+import w3 from "../assets/Images/Wellding/w3.jpg"
+import w4 from "../assets/Images/Wellding/w4.jpg"
+
+
+/// electricity 
+import e1 from "../assets/Images/electricity/e1.jpg"
+import e2 from "../assets/Images/electricity/e2.jpg"
+import e3 from "../assets/Images/electricity/e3.jpg"
+import e4 from "../assets/Images/electricity/e4.jpg"
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
@@ -84,6 +115,7 @@ const ServiceDetail = () => {
       fullDescription:
         "We specialize in comprehensive civil construction services for industrial facilities, commercial buildings, and large-scale infrastructure projects. Our team of experienced engineers and construction professionals ensures every project meets the highest standards of quality, safety, and efficiency.",
       image: service1,
+      // Using generic gallery images for civil construction
       gallery: [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6],
       icon: Hammer,
       color: "#d97706",
@@ -168,7 +200,8 @@ const ServiceDetail = () => {
       fullDescription:
         "Our certified welding services utilize state-of-the-art equipment and techniques including TIG, MIG, and arc welding. We serve various industries with precision welding for structural steel, pipelines, machinery, and custom fabrication projects.",
       image: service4,
-      gallery: [gallery2, gallery3, gallery4, gallery5, gallery1, gallery6],
+      // Using welding-specific images
+      gallery: [w1, w2, w3, w4],
       icon: Zap,
       color: "#475569",
       features: [
@@ -253,7 +286,8 @@ const ServiceDetail = () => {
       fullDescription:
         "We design, install, and maintain complete fire protection systems for industrial facilities, commercial buildings, and residential complexes. Our solutions include fire detection, alarm systems, suppression systems, and emergency response planning.",
       image: service11,
-      gallery: [gallery3, gallery4, gallery5, gallery6, gallery1, gallery2],
+      // Using firefighting-specific images
+      gallery: [F1, F2, F3, F4],
       icon: Flame,
       color: "#1e40af",
       features: [
@@ -337,7 +371,8 @@ const ServiceDetail = () => {
       fullDescription:
         "We provide integrated security and electrical solutions including CCTV surveillance, access control systems, electrical wiring, power distribution, and smart building automation for enhanced safety and efficiency.",
       image: service9,
-      gallery: [gallery4, gallery5, gallery6, gallery1, gallery2, gallery3],
+      // Using generic gallery images for security & electrical
+      gallery: [e1,e2,e3,e4],
       icon: SecurityShield,
       color: "#2563eb",
       features: [
@@ -421,7 +456,8 @@ const ServiceDetail = () => {
       fullDescription:
         "Our sandblasting and coating services protect industrial equipment, structures, and machinery from corrosion, wear, and environmental damage. We use advanced techniques and high-quality materials for long-lasting protection.",
       image: service5,
-      gallery: [gallery5, gallery6, gallery1, gallery2, gallery3, gallery4],
+      // Using sandblasting-specific images
+      gallery: [s1, s2, s3, s4],
       icon: Droplets,
       color: "#64748b",
       features: [
@@ -501,7 +537,8 @@ const ServiceDetail = () => {
       fullDescription:
         "We provide skilled manpower solutions for various industrial sectors including construction, manufacturing, maintenance, and operations. Our workforce includes certified professionals, technicians, and skilled laborers ready to meet your project needs.",
       image: service6,
-      gallery: [gallery6, gallery1, gallery2, gallery3, gallery4, gallery5],
+      // Using manpower-specific images
+      gallery: [M1, M2, M3, M4],
       icon: ManpowerUsers,
       color: "#059669",
       features: [
@@ -591,14 +628,14 @@ const ServiceDetail = () => {
   if (!service) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        {/* <div className="text-center">
+        <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Service Not Found
           </h2>
           <Link to="/services" className="text-blue-600 hover:text-blue-800">
             Back to Services
           </Link>
-        </div> */}
+        </div>
       </div>
     );
   }
@@ -630,7 +667,6 @@ const ServiceDetail = () => {
     },
   };
 
- 
   // Image Gallery Functions
   const openImageGallery = (index = 0) => {
     setSelectedImage(service.gallery[index]);
@@ -664,57 +700,8 @@ const ServiceDetail = () => {
         }}
       />
 
-      {/* Sticky Navigation */}
-      <motion.nav
-        className="sticky top-0 z-50 bg-white shadow-sm border-b"
-        style={{ opacity: Math.min(1, scrollY / 100) }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-6">
-              {/* <Link
-                to="/"
-                className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                <ArrowLeft className="h-5 w-5 mr-2" />
-                Back to Services
-              </Link> */}
-
-              {/* Breadcrumb Navigation */}
-              <div className="hidden md:flex items-center space-x-2 text-sm">
-                <Link
-                  to="/"
-                  className="text-gray-500 hover:text-gray-700 flex items-center"
-                >
-                  <Home className="h-4 w-4 mr-1" />
-                  Home
-                </Link>
-               
-               
-                <ChevronRight className="h-4 w-4 text-gray-400" />
-                <span className="text-gray-900 font-medium">
-                  {service.title}
-                </span>
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-500">Need help?</span>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-                style={{ backgroundColor: service.color }}
-              >
-                Contact Us
-              </motion.button>
-            </div>
-          </div>
-        </div>
-      </motion.nav>
-
       {/* Hero Section with Improved Image Gallery */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden pt-12">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <div
@@ -866,23 +853,25 @@ const ServiceDetail = () => {
               </div>
 
               {/* Third Image - Overlapping */}
-              <motion.div
-                className="absolute top-4 left-1/2 w-1/3 h-1/3 rounded-xl shadow-xl overflow-hidden cursor-pointer z-30"
-                whileHover={{ scale: 1.08, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                onClick={() => openImageGallery(3)}
-              >
-                <img
-                  src={service.gallery[3]}
-                  alt={`${service.title} Project 4`}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-start justify-end">
-                  <div className="p-2">
-                    <Maximize2 className="h-4 w-4 text-white" />
+              {service.gallery.length > 3 && (
+                <motion.div
+                  className="absolute top-4 left-1/2 w-1/3 h-1/3 rounded-xl shadow-xl overflow-hidden cursor-pointer z-30"
+                  whileHover={{ scale: 1.08, rotate: 2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  onClick={() => openImageGallery(3)}
+                >
+                  <img
+                    src={service.gallery[3]}
+                    alt={`${service.title} Project 4`}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-start justify-end">
+                    <div className="p-2">
+                      <Maximize2 className="h-4 w-4 text-white" />
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              )}
 
               {/* Gallery Badge */}
               <motion.div
@@ -898,7 +887,6 @@ const ServiceDetail = () => {
         </div>
       </section>
 
-      {/* Tab Navigation */}
       {/* Tab Navigation */}
       <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -965,7 +953,6 @@ const ServiceDetail = () => {
         </div>
       </section>
 
-      {/* Tab Content - Keep all your existing tab content exactly as is */}
       {/* Tab Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <AnimatePresence mode="wait">
@@ -1369,8 +1356,6 @@ const ServiceDetail = () => {
         </AnimatePresence>
       </div>
 
-      {/* Service Navigation Section */}
-
       {/* Enhanced CTA Section */}
       <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden">
         {/* Background Pattern */}
@@ -1448,13 +1433,14 @@ const ServiceDetail = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative max-w-6xl max-h-full"
+              className="relative w-auto max-w-6xl max-h-[90vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* FIXED IMAGE SIZING */}
               <img
                 src={selectedImage}
                 alt="Gallery Image"
-                className="max-w-full max-h-full object-contain rounded-lg"
+                className="max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl"
               />
 
               {/* Navigation Buttons */}
@@ -1464,7 +1450,7 @@ const ServiceDetail = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={prevImage}
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
                   >
                     <ChevronLeft className="h-6 w-6 text-gray-700" />
                   </motion.button>
@@ -1472,7 +1458,7 @@ const ServiceDetail = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={nextImage}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
                   >
                     <ChevronRight className="h-6 w-6 text-gray-700" />
                   </motion.button>
@@ -1490,7 +1476,7 @@ const ServiceDetail = () => {
               </motion.button>
 
               {/* Image Counter */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
                 {galleryIndex + 1} / {service.gallery.length}
               </div>
             </motion.div>

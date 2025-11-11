@@ -244,7 +244,7 @@ const Footer = () => {
 
       {/* Floating Contact Button */}
       <motion.a
-        href="#"
+        href="/contact-us"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg z-50 flex items-center space-x-2 transition-colors duration-300"
