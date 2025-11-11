@@ -1448,7 +1448,7 @@ const ServiceDetail = () => {
                 <>
                   <motion.button
                     // whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    // whileTap={{ scale: 0.9 }}
                     onClick={prevImage}
                     className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
                   >
@@ -1456,7 +1456,7 @@ const ServiceDetail = () => {
                   </motion.button>
                   <motion.button
                     // whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    // whileTap={{ scale: 0.9 }}
                     onClick={nextImage}
                     className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
                   >
