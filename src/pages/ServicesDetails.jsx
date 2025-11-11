@@ -116,7 +116,7 @@ const ServiceDetail = () => {
         "We specialize in comprehensive civil construction services for industrial facilities, commercial buildings, and large-scale infrastructure projects. Our team of experienced engineers and construction professionals ensures every project meets the highest standards of quality, safety, and efficiency.",
       image: service1,
       // Using generic gallery images for civil construction
-      gallery: [gallery1, gallery2, gallery3, gallery4, gallery5, gallery6],
+      gallery: [gallery1, gallery2, gallery3, gallery4],
       icon: Hammer,
       color: "#d97706",
       features: [
@@ -1437,11 +1437,11 @@ const ServiceDetail = () => {
               onClick={(e) => e.stopPropagation()}
             >
               {/* FIXED IMAGE SIZING */}
-              <img
-                src={selectedImage}
-                alt="Gallery Image"
-                className="max-h-[90vh] max-w-full object-contain rounded-lg shadow-2xl"
-              />
+             <img
+  src={selectedImage}
+  alt="Gallery Image"
+  className="w-[600px] h-[400px] object-cover rounded-lg shadow-2xl"
+/>
 
               {/* Navigation Buttons */}
               {service.gallery.length > 1 && (
