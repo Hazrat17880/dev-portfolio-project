@@ -1,7 +1,6 @@
 {
   "navbar": {
     "home": "Home",
-
     "aboutUs": "About Us",
     "contact": "Contact"
   },
@@ -40,49 +39,232 @@
     "sitemap": "Sitemap",
     "contactUs": "Contact Us"
   },
+
+  "_comment": "Home paeg testimonial  ",
+
+  "testimonials": {
+    "sectionTitle": "Trusted by Industry",
+    "sectionHighlight": "Clients",
+    "sectionSubtitle": "Discover why leading companies choose us for their industrial construction needs. Quality, reliability, and excellence in every project.",
+    "anjali": {
+      "name": "Anjali Sharma",
+      "role": "Project Manager",
+      "company": "Zenith Constructions",
+      "content": "Their commitment to precision and safety is unmatched. The civil construction team delivered our new facility on time and with exceptional quality."
+    },
+    "david": {
+      "name": "David Chen",
+      "role": "Operations Director",
+      "company": "Innovate Manufacturing",
+      "content": "We hired their manpower solutions and were incredibly impressed with the skill and professionalism of the team."
+    },
+    "fatima": {
+      "name": "Fatima Al-Rashid",
+      "role": "Safety Officer",
+      "company": "Gulf Petrochemicals",
+      "content": "The firefighting systems they installed are top-of-the-line. Their team's expertise in industrial safety standards gave us complete confidence."
+    },
+    "rajesh": {
+      "name": "Rajesh Kumar",
+      "role": "Plant Manager",
+      "company": "SteelTech Industries",
+      "content": "Exceptional welding services that exceeded our expectations. The quality and durability are remarkable."
+    },
+    "sarah": {
+      "name": "Sarah Johnson",
+      "role": "Facility Director",
+      "company": "Global Manufacturing",
+      "content": "Their electrical and security solutions transformed our facility's safety standards. Professional and efficient."
+    },
+    "michael": {
+      "name": "Michael Brown",
+      "role": "Operations Head",
+      "company": "Heavy Machinery Corp",
+      "content": "The sandblasting and coating work significantly extended our equipment lifespan. Outstanding quality."
+    },
+    "stats": {
+      "projectsCompleted": "Projects Completed",
+      "clientSatisfaction": "Client Satisfaction",
+      "yearsExperience": "Years Experience",
+      "industryPartners": "Industry Partners"
+    }
+  },
+
+  "_comment": "This section are the about us page ",
+
+
   "hero": {
+    "mainTitle": "About Our Startup",
+    "subtitle": "Leading industrial construction with innovation, precision, and unwavering commitment to excellence for over 15 years.",
+    "sectionTitle": "Let's Discuss Your Industrial Project",
+    "highlight": "Industrial Project",
+    "sectionSubtitle": "Our expert team is ready to bring your vision to life with precision and excellence",
     "buildingTheFuture": "Building The Future With",
     "strength": "Strength",
     "innovation": "Innovation",
-    "subtitle": "Delivering world-class industrial construction solutions that empower progress, reliability, and long-term growth.",
     "getQuote": "Get a Quote",
     "ourServices": "Our Services"
   },
-  
   "services": {
     "sectionTitle": "Our Services",
     "sectionSubtitle": "Delivering world-class industrial and construction services with innovation, precision, and reliability that drive long-term value for every client.",
     "service1": {
       "title": "Civil Construction",
-      "description": "High-quality construction services for factories, warehouses, and large-scale facilities with precise engineering and project management."
+      "description": "High-quality construction services for factories, warehouses, and large-scale facilities."
     },
     "service2": {
       "title": "Welding Services",
-      "description": "Professional welding solutions with advanced techniques and certified welders ensuring durable, safe, and reliable joints."
+      "description": "Professional welding solutions with certified welders ensuring safe and reliable joints."
     },
     "service3": {
       "title": "Firefighting Systems",
-      "description": "Comprehensive fire protection systems design, installation, and maintenance to meet industrial safety standards."
+      "description": "Comprehensive fire protection systems design, installation, and maintenance."
     },
     "service4": {
       "title": "Security & Electrical",
-      "description": "Integrated security and electrical systems providing smart, efficient, and complete facility management solutions."
+      "description": "Integrated security and electrical systems providing smart facility management."
     },
     "service5": {
       "title": "Sandblasting & Coating",
-      "description": "Surface preparation and protective coating services to extend equipment lifespan and prevent corrosion in harsh environments."
+      "description": "Surface preparation and protective coating services for harsh environments."
     },
     "service6": {
       "title": "Manpower Solutions",
-      "description": "Reliable manpower solutions providing skilled, certified professionals for industrial operations and project requirements."
+      "description": "Reliable manpower solutions providing skilled professionals for industrial operations."
+    }
+  },
+
+  "stats": {
+    "yearsExperience": "Years Experience",
+    "professionals": "Professionals",
+    "projects": "Projects",
+    "awards": "Awards"
+  },
+  "story": {
+    "title": "Our Story",
+    "p1": "Founded in 2009, ConstructPro began with a vision to revolutionize industrial construction. What started as a small team with big dreams has grown into an industry leader trusted by clients worldwide.",
+    "p2": "Our journey is built on a foundation of excellence, innovation, and an unwavering commitment to delivering exceptional results. Every project reflects our dedication to quality and client satisfaction.",
+    "quality": "Quality Focused",
+    "growth": "Growth Mindset"
+  },
+  "values": {
+    "title": "Our Values",
+    "subtitle": "The principles that guide our work and define our culture",
+    "safety": "Safety First",
+    "safetyDesc": "Prioritizing safety in every project for team and client well-being",
+    "quality": "Quality Excellence",
+    "qualityDesc": "Delivering exceptional quality that exceeds industry standards",
+    "integrity": "Integrity",
+    "integrityDesc": "Building trust through transparent communication and ethics",
+    "innovation": "Innovation",
+    "innovationDesc": "Embracing cutting-edge technology and creative solutions"
+  },
+  "team": {
+    "title": "Leadership Team",
+    "subtitle": "Experienced professionals driving our success",
+    "members": {
+      "john": { "position": "CEO & Founder", "experience": "20+ years" },
+      "sarah": { "position": "COO", "experience": "18+ years" },
+      "michael": {
+        "position": "Technical Director",
+        "experience": "15+ years"
+      },
+      "emily": { "position": "HR Director", "experience": "12+ years" }
+    }
+  },
+  "cta": {
+    "title": "Ready to Start Your Project?",
+    "subtitle": "Contact our expert team today and let's discuss how we can bring your industrial vision to life",
+    "callNow": "Call Now",
+    "emailUs": "Email Us",
+    "features": ["24/7 Support", "Global Reach", "Quality Guaranteed"]
+  },
+
+
+
+   "_comment": "This section are the contact  us page ",
+
+  "contact": {
+    "title": "Contact Us",
+    "description": "Feel free to reach out to us via any of the methods below.",
+    "address": {
+      "title": "Address",
+      "text": "123 Main Street, New York, NY"
     },
-    "ctaText": "Looking for a custom solution tailored to your business needs?",
-    "ctaButton": "Get Free Consultation",
-    "learnMore": "Learn More"
-  }
- 
-     
-  
+    "email": {
+      "title": "Email",
+      "text": "contact@example.com"
+    },
+    "phone": {
+      "title": "Phone",
+      "text": "+1 (555) 123-4567"
+    },
+    "hours": {
+      "title": "Business Hours",
+      "text": "Mon-Fri: 9:00 AM - 5:00 PM"
+    },
+    "contactCards": [
+      {
+        "title": "Call Us",
+        "phone": "+971 4 123 4567",
+        "subtitle": "Mon - Fri: 8:00 AM - 6:00 PM"
+      },
+      {
+        "title": "Email Us",
+        "email": "info@company.com",
+        "subtitle": "24/7 Support Available"
+      },
+      {
+        "title": "Visit Us",
+        "location": "Dubai, UAE",
+        "subtitle": "3 Office Locations"
+      }
+    ],
+    "form": {
+      "name": "Your Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "service": "Service Interest",
+      "selectService": "Select a service",
+      "message": "Message",
+      "placeholderName": "John Doe",
+      "placeholderCompany": "Company Name",
+      "placeholderEmail": "john@example.com",
+      "placeholderPhone": "+971 XX XXX XXXX",
+      "placeholderMessage": "Tell us about your project...",
+      "submit": "Send Message",
+      "success": "Message Sent!"
+    },
+    "officesTitle": "Our Offices",
+    "faqsTitle": "Frequently Asked Questions",
+    "faqs": [
+      {
+        "question": "How quickly can you start a project?",
+        "answer": "We typically begin projects within 2-3 weeks after contract signing, depending on project complexity and material availability."
+      },
+      {
+        "question": "Do you provide project warranties?",
+        "answer": "Yes, all our projects come with comprehensive warranties ranging from 1-5 years, depending on service type."
+      },
+      {
+        "question": "Can you work with international clients?",
+        "answer": "Absolutely! We have experience working with clients globally and can manage international projects efficiently."
+      },
+      {
+        "question": "What industries do you serve?",
+        "answer": "We serve various industries including manufacturing, oil & gas, construction, logistics, and more."
+      }
+    ]
+  },
+
+
+   "_comment": "This section are the  services details page page "
+
+
+
+
+
 
 
 

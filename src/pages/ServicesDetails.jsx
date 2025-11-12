@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
-// Add these imports at the top
 import { ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import {
   ArrowLeft,
@@ -45,19 +45,17 @@ import service9 from "../assets/Images/services9.jpg";
 import service5 from "../assets/Images/services5.jpg";
 import service6 from "../assets/Images/services6.jpg";
 
-// Import additional gallery images (for fallback)
+// Import additional gallery images
 import gallery1 from "../assets/Images/gallery1.jpg";
 import gallery2 from "../assets/Images/gallery2.jpg";
 import gallery3 from "../assets/Images/gallery3.jpg";
 import gallery4 from "../assets/Images/gallery4.jpeg";
-import gallery5 from "../assets/Images/gallery5.jpg";
-import gallery6 from "../assets/Images/gallery6.jpg";
 
-// fire fighting 
-import F1 from "../assets/Images/fire/f1.jpg"
-import F2 from "../assets/Images/fire/f2.jpg"
-import F3 from "../assets/Images/fire/f3.jpg"
-import F4 from "../assets/Images/fire/f4.jpg"
+// fire fighting
+import F1 from "../assets/Images/fire/f1.jpg";
+import F2 from "../assets/Images/fire/f2.jpg";
+import F3 from "../assets/Images/fire/f3.jpg";
+import F4 from "../assets/Images/fire/f4.jpg";
 
 // manpower
 import M1 from "../assets/Images/manpower/m1.jpg";
@@ -71,18 +69,17 @@ import s2 from "../assets/Images/sandblasting/s2.jpg";
 import s3 from "../assets/Images/sandblasting/s3.jpg";
 import s4 from "../assets/Images/sandblasting/s4.jpg";
 
-/// wellding images
-import w1 from "../assets/Images/Wellding/w1.jpg"
-import w2 from "../assets/Images/Wellding/w2.jpg"
-import w3 from "../assets/Images/Wellding/w3.jpg"
-import w4 from "../assets/Images/Wellding/w4.jpg"
+// welding images
+import w1 from "../assets/Images/Wellding/w1.jpg";
+import w2 from "../assets/Images/Wellding/w2.jpg";
+import w3 from "../assets/Images/Wellding/w3.jpg";
+import w4 from "../assets/Images/Wellding/w4.jpg";
 
-
-/// electricity 
-import e1 from "../assets/Images/electricity/e1.jpg"
-import e2 from "../assets/Images/electricity/e2.jpg"
-import e3 from "../assets/Images/electricity/e3.jpg"
-import e4 from "../assets/Images/electricity/e4.jpg"
+// electricity
+import e1 from "../assets/Images/electricity/e1.jpg";
+import e2 from "../assets/Images/electricity/e2.jpg";
+import e3 from "../assets/Images/electricity/e3.jpg";
+import e4 from "../assets/Images/electricity/e4.jpg";
 
 const ServiceDetail = () => {
   const { serviceId } = useParams();
@@ -91,11 +88,14 @@ const ServiceDetail = () => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
-  // Add this state to your component
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Track scroll position for back-to-top button
+  // Use i18next translation hook - same as contact page
+  const { t, i18n } = useTranslation();
+  const isArabic = i18n.language === "ar";
+
+  // Track scroll position
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -106,514 +106,286 @@ const ServiceDetail = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Service data matching main services section with updated color scheme
+  // Service data structure using i18next
   const servicesData = {
     "civil-construction": {
-      title: "Civil Construction",
-      description:
-        "High-quality construction services for factories, warehouses, and large-scale facilities with precise engineering and project management.",
-      fullDescription:
-        "We specialize in comprehensive civil construction services for industrial facilities, commercial buildings, and large-scale infrastructure projects. Our team of experienced engineers and construction professionals ensures every project meets the highest standards of quality, safety, and efficiency.",
+      title: t(
+        "servicesDetails.civil-construction.title",
+        "Civil Construction"
+      ),
+      description: t(
+        "servicesDetails.civil-construction.description",
+        "High-quality construction services for factories, warehouses, and large-scale facilities with precise engineering and project management."
+      ),
+      fullDescription: t(
+        "servicesDetails.civil-construction.fullDescription",
+        "We specialize in comprehensive civil construction services for industrial facilities, commercial buildings, and large-scale infrastructure projects. Our team of experienced engineers and construction professionals ensures every project meets the highest standards of quality, safety, and efficiency."
+      ),
+      features: t("servicesDetails.civil-construction.features", {
+        returnObjects: true,
+        defaultValue: [
+          "Structural Design & Engineering",
+          "Project Management & Planning",
+          "Quality Control & Assurance",
+          "Safety Compliance & Protocols",
+          "Material Procurement & Management",
+          "Timely Project Delivery",
+        ],
+      }),
+      process: t("servicesDetails.civil-construction.process", {
+        returnObjects: true,
+        defaultValue: [
+          {
+            step: 1,
+            title: "Consultation & Planning",
+            description: "Initial assessment and project planning",
+          },
+          {
+            step: 2,
+            title: "Design & Engineering",
+            description: "Detailed structural design and engineering",
+          },
+          {
+            step: 3,
+            title: "Material Procurement",
+            description: "Sourcing high-quality construction materials",
+          },
+          {
+            step: 4,
+            title: "Construction Execution",
+            description: "On-site construction with quality control",
+          },
+          {
+            step: 5,
+            title: "Quality Inspection",
+            description: "Comprehensive quality checks and testing",
+          },
+          {
+            step: 6,
+            title: "Project Handover",
+            description: "Final delivery and client handover",
+          },
+        ],
+      }),
+      stats: t("servicesDetails.civil-construction.stats", {
+        returnObjects: true,
+        defaultValue: [
+          { value: "200+", label: "Projects Completed" },
+          { value: "50+", label: "Expert Engineers" },
+          { value: "100%", label: "Safety Record" },
+        ],
+      }),
+      testimonials: t("servicesDetails.civil-construction.testimonials", {
+        returnObjects: true,
+        defaultValue: [
+          {
+            name: "John Smith",
+            position: "CEO, Industrial Corp",
+            content:
+              "Their construction team delivered our new facility ahead of schedule with exceptional quality. Highly professional and reliable.",
+            rating: 5,
+          },
+          {
+            name: "Sarah Johnson",
+            position: "Project Manager, BuildTech",
+            content:
+              "The attention to detail and commitment to safety standards is impressive. They exceeded our expectations at every stage.",
+            rating: 5,
+          },
+        ],
+      }),
+      faq: t("servicesDetails.civil-construction.faq", {
+        returnObjects: true,
+        defaultValue: [
+          {
+            question: "How long does a typical construction project take?",
+            answer:
+              "Project timelines vary based on scope and complexity. Small projects may take 3-6 months, while large-scale facilities can take 12-24 months.",
+          },
+          {
+            question: "Do you provide post-construction maintenance?",
+            answer:
+              "Yes, we offer comprehensive maintenance packages to ensure your facility remains in optimal condition after completion.",
+          },
+        ],
+      }),
       image: service1,
-      // Using generic gallery images for civil construction
       gallery: [gallery1, gallery2, gallery3, gallery4],
       icon: Hammer,
       color: "#d97706",
-      features: [
-        "Structural Design & Engineering",
-        "Project Management & Planning",
-        "Quality Control & Assurance",
-        "Safety Compliance & Protocols",
-        "Material Procurement & Management",
-        "Timely Project Delivery",
-      ],
-      process: [
-        {
-          step: 1,
-          title: "Consultation & Planning",
-          description: "Initial assessment and project planning",
-        },
-        {
-          step: 2,
-          title: "Design & Engineering",
-          description: "Detailed structural design and engineering",
-        },
-        {
-          step: 3,
-          title: "Material Procurement",
-          description: "Sourcing high-quality construction materials",
-        },
-        {
-          step: 4,
-          title: "Construction Execution",
-          description: "On-site construction with quality control",
-        },
-        {
-          step: 5,
-          title: "Quality Inspection",
-          description: "Comprehensive quality checks and testing",
-        },
-        {
-          step: 6,
-          title: "Project Handover",
-          description: "Final delivery and client handover",
-        },
-      ],
-      stats: [
-        { icon: Clock, value: "200+", label: "Projects Completed" },
-        { icon: Users, value: "50+", label: "Expert Engineers" },
-        { icon: Shield, value: "100%", label: "Safety Record" },
-      ],
-      testimonials: [
-        {
-          name: "John Smith",
-          position: "CEO, Industrial Corp",
-          content:
-            "Their construction team delivered our new facility ahead of schedule with exceptional quality. Highly professional and reliable.",
-          rating: 5,
-        },
-        {
-          name: "Sarah Johnson",
-          position: "Project Manager, BuildTech",
-          content:
-            "The attention to detail and commitment to safety standards is impressive. They exceeded our expectations at every stage.",
-          rating: 5,
-        },
-      ],
-      faq: [
-        {
-          question: "How long does a typical construction project take?",
-          answer:
-            "Project timelines vary based on scope and complexity. Small projects may take 3-6 months, while large-scale facilities can take 12-24 months.",
-        },
-        {
-          question: "Do you provide post-construction maintenance?",
-          answer:
-            "Yes, we offer comprehensive maintenance packages to ensure your facility remains in optimal condition after completion.",
-        },
-      ],
     },
     welding: {
-      title: "Welding Services",
-      description:
-        "Professional welding solutions with advanced techniques and certified welders ensuring durable, safe, and reliable joints.",
-      fullDescription:
-        "Our certified welding services utilize state-of-the-art equipment and techniques including TIG, MIG, and arc welding. We serve various industries with precision welding for structural steel, pipelines, machinery, and custom fabrication projects.",
+      title: t("services.service2.title", "Welding Services"),
+      description: t(
+        "services.service2.description",
+        "Professional welding solutions with certified welders ensuring safe and reliable joints."
+      ),
+      fullDescription: t(
+        "servicesDetails.welding.fullDescription",
+        "Our certified welding services utilize state-of-the-art equipment and techniques including TIG, MIG, and arc welding. We serve various industries with precision welding for structural steel, pipelines, machinery, and custom fabrication projects."
+      ),
+      features: t("servicesDetails.welding.features", {
+        returnObjects: true,
+        defaultValue: [
+          "TIG/MIG/Arc Welding",
+          "Stainless Steel & Aluminum",
+          "Structural Steel Welding",
+          "Pipeline Welding",
+          "Quality Testing & Inspection",
+          "Certified Welders",
+        ],
+      }),
+      process: t("servicesDetails.welding.process", {
+        returnObjects: true,
+        defaultValue: [
+          {
+            step: 1,
+            title: "Material Assessment",
+            description: "Evaluate materials and welding requirements",
+          },
+          {
+            step: 2,
+            title: "Technique Selection",
+            description: "Choose appropriate welding method",
+          },
+          {
+            step: 3,
+            title: "Surface Preparation",
+            description: "Clean and prepare surfaces for welding",
+          },
+          {
+            step: 4,
+            title: "Precision Welding",
+            description: "Execute welding with precision",
+          },
+          {
+            step: 5,
+            title: "Quality Testing",
+            description: "Non-destructive testing and inspection",
+          },
+          {
+            step: 6,
+            title: "Finishing & Protection",
+            description: "Surface finishing and corrosion protection",
+          },
+        ],
+      }),
+      stats: t("servicesDetails.welding.stats", {
+        returnObjects: true,
+        defaultValue: [
+          { value: "5000+", label: "Welding Projects" },
+          { value: "30+", label: "Certified Welders" },
+          { value: "ASME", label: "Certified" },
+        ],
+      }),
       image: service4,
-      // Using welding-specific images
       gallery: [w1, w2, w3, w4],
       icon: Zap,
       color: "#475569",
-      features: [
-        "TIG/MIG/Arc Welding",
-        "Stainless Steel & Aluminum",
-        "Structural Steel Welding",
-        "Pipeline Welding",
-        "Quality Testing & Inspection",
-        "Certified Welders",
-      ],
-      process: [
-        {
-          step: 1,
-          title: "Material Assessment",
-          description: "Evaluate materials and welding requirements",
-        },
-        {
-          step: 2,
-          title: "Technique Selection",
-          description: "Choose appropriate welding method",
-        },
-        {
-          step: 3,
-          title: "Surface Preparation",
-          description: "Clean and prepare surfaces for welding",
-        },
-        {
-          step: 4,
-          title: "Precision Welding",
-          description: "Execute welding with precision",
-        },
-        {
-          step: 5,
-          title: "Quality Testing",
-          description: "Non-destructive testing and inspection",
-        },
-        {
-          step: 6,
-          title: "Finishing & Protection",
-          description: "Surface finishing and corrosion protection",
-        },
-      ],
-      stats: [
-        { icon: Clock, value: "5000+", label: "Welding Projects" },
-        { icon: Users, value: "30+", label: "Certified Welders" },
-        { icon: Shield, value: "ASME", label: "Certified" },
-      ],
-      testimonials: [
-        {
-          name: "Michael Chen",
-          position: "Operations Director, SteelWorks",
-          content:
-            "The welding quality is exceptional. Their team's expertise and attention to detail have significantly improved our product durability.",
-          rating: 5,
-        },
-        {
-          name: "Emily Rodriguez",
-          position: "Quality Manager, Precision Fabricators",
-          content:
-            "We've been working with them for years. Their certified welders consistently deliver flawless results that meet our strict standards.",
-          rating: 5,
-        },
-      ],
-      faq: [
-        {
-          question: "What welding certifications do your welders hold?",
-          answer:
-            "Our welders are certified with AWS, ASME, and ISO standards, ensuring they meet industry requirements for various welding applications.",
-        },
-        {
-          question:
-            "Can you weld specialized materials like titanium or exotic alloys?",
-          answer:
-            "Yes, we have experience with a wide range of materials including titanium, nickel alloys, and other exotic metals for specialized applications.",
-        },
-      ],
     },
     firefighting: {
-      title: "Firefighting Systems",
-      description:
-        "Comprehensive fire protection systems design, installation, and maintenance to meet industrial safety standards.",
-      fullDescription:
-        "We design, install, and maintain complete fire protection systems for industrial facilities, commercial buildings, and residential complexes. Our solutions include fire detection, alarm systems, suppression systems, and emergency response planning.",
+      title: t("services.service3.title", "Firefighting Systems"),
+      description: t(
+        "services.service3.description",
+        "Comprehensive fire protection systems design, installation, and maintenance."
+      ),
+      fullDescription: t(
+        "servicesDetails.firefighting.fullDescription",
+        "We design, install, and maintain complete fire protection systems for industrial facilities, commercial buildings, and residential complexes. Our solutions include fire detection, alarm systems, suppression systems, and emergency response planning."
+      ),
+      features: t("servicesDetails.firefighting.features", {
+        returnObjects: true,
+        defaultValue: [
+          "Fire Detection Systems",
+          "Alarm & Notification Systems",
+          "Fire Suppression Systems",
+          "Emergency Lighting",
+          "Regular Maintenance",
+          "Safety Compliance",
+        ],
+      }),
       image: service11,
-      // Using firefighting-specific images
       gallery: [F1, F2, F3, F4],
       icon: Flame,
       color: "#1e40af",
-      features: [
-        "Fire Detection Systems",
-        "Alarm & Notification Systems",
-        "Fire Suppression Systems",
-        "Emergency Lighting",
-        "Regular Maintenance",
-        "Safety Compliance",
-      ],
-      process: [
-        {
-          step: 1,
-          title: "Risk Assessment",
-          description: "Evaluate fire risks and requirements",
-        },
-        {
-          step: 2,
-          title: "System Design",
-          description: "Design customized fire protection system",
-        },
-        {
-          step: 3,
-          title: "Equipment Installation",
-          description: "Install fire detection and suppression systems",
-        },
-        {
-          step: 4,
-          title: "System Integration",
-          description: "Integrate with building systems",
-        },
-        {
-          step: 5,
-          title: "Testing & Commissioning",
-          description: "Comprehensive system testing",
-        },
-        {
-          step: 6,
-          title: "Training & Maintenance",
-          description: "Staff training and maintenance plans",
-        },
-      ],
-      stats: [
-        { icon: Clock, value: "300+", label: "Systems Installed" },
-        { icon: Users, value: "NFPA", label: "Compliant" },
-        { icon: Shield, value: "24/7", label: "Support" },
-      ],
-      testimonials: [
-        {
-          name: "Robert Taylor",
-          position: "Safety Director, Manufacturing Plus",
-          content:
-            "Their firefighting systems have given us peace of mind. The installation was professional and ongoing support is excellent.",
-          rating: 5,
-        },
-        {
-          name: "Lisa Anderson",
-          position: "Facility Manager, Commercial Properties",
-          content:
-            "The fire protection system they designed for our property is comprehensive and meets all regulatory requirements. Highly recommended.",
-          rating: 5,
-        },
-      ],
-      faq: [
-        {
-          question: "How often should fire protection systems be inspected?",
-          answer:
-            "We recommend quarterly inspections for critical components and annual comprehensive inspections to ensure optimal performance and compliance.",
-        },
-        {
-          question: "Do you provide emergency response services?",
-          answer:
-            "While we don't provide emergency firefighting services, we ensure your systems are optimized to work seamlessly with local emergency services.",
-        },
-      ],
     },
     "security-electrical": {
-      title: "Security & Electrical",
-      description:
-        "Integrated security and electrical systems providing smart, efficient, and complete facility management solutions.",
-      fullDescription:
-        "We provide integrated security and electrical solutions including CCTV surveillance, access control systems, electrical wiring, power distribution, and smart building automation for enhanced safety and efficiency.",
+      title: t("services.service4.title", "Security & Electrical"),
+      description: t(
+        "services.service4.description",
+        "Integrated security and electrical systems providing smart facility management."
+      ),
+      fullDescription: t(
+        "servicesDetails.security-electrical.fullDescription",
+        "We provide integrated security and electrical solutions including CCTV surveillance, access control systems, electrical wiring, power distribution, and smart building automation for enhanced safety and efficiency."
+      ),
+      features: t("servicesDetails.security-electrical.features", {
+        returnObjects: true,
+        defaultValue: [
+          "CCTV Surveillance Systems",
+          "Access Control Solutions",
+          "Electrical Wiring & Panels",
+          "Power Distribution",
+          "Smart Automation",
+          "24/7 Monitoring",
+        ],
+      }),
       image: service9,
-      // Using generic gallery images for security & electrical
-      gallery: [e1,e2,e3,e4],
+      gallery: [e1, e2, e3, e4],
       icon: SecurityShield,
       color: "#2563eb",
-      features: [
-        "CCTV Surveillance Systems",
-        "Access Control Solutions",
-        "Electrical Wiring & Panels",
-        "Power Distribution",
-        "Smart Automation",
-        "24/7 Monitoring",
-      ],
-      process: [
-        {
-          step: 1,
-          title: "Site Survey",
-          description: "Comprehensive site assessment",
-        },
-        {
-          step: 2,
-          title: "System Design",
-          description: "Design integrated security and electrical systems",
-        },
-        {
-          step: 3,
-          title: "Installation",
-          description: "Professional installation of all components",
-        },
-        {
-          step: 4,
-          title: "Integration",
-          description: "System integration and configuration",
-        },
-        {
-          step: 5,
-          title: "Testing",
-          description: "Thorough testing and optimization",
-        },
-        {
-          step: 6,
-          title: "Training",
-          description: "Client training and handover",
-        },
-      ],
-      stats: [
-        { icon: Clock, value: "400+", label: "Installations" },
-        { icon: Users, value: "Smart", label: "Solutions" },
-        { icon: Shield, value: "UL", label: "Certified" },
-      ],
-      testimonials: [
-        {
-          name: "David Kim",
-          position: "IT Director, Tech Innovations",
-          content:
-            "The integrated security and electrical system has transformed our facility operations. Everything works seamlessly together.",
-          rating: 5,
-        },
-        {
-          name: "Jennifer Martinez",
-          position: "Operations Manager, Logistics Hub",
-          content:
-            "Their smart automation solutions have improved our efficiency significantly. The installation was smooth and support is outstanding.",
-          rating: 5,
-        },
-      ],
-      faq: [
-        {
-          question: "Can you integrate with existing security systems?",
-          answer:
-            "Yes, we specialize in integrating new components with existing systems to create a cohesive security and electrical infrastructure.",
-        },
-        {
-          question: "Do you offer remote monitoring services?",
-          answer:
-            "We provide 24/7 remote monitoring options for all our security systems, with immediate alerts and response protocols in place.",
-        },
-      ],
     },
     "sandblasting-coating": {
-      title: "Sandblasting & Coating",
-      description:
-        "Surface preparation and protective coating services to extend equipment lifespan and prevent corrosion in harsh environments.",
-      fullDescription:
-        "Our sandblasting and coating services protect industrial equipment, structures, and machinery from corrosion, wear, and environmental damage. We use advanced techniques and high-quality materials for long-lasting protection.",
+      title: t("services.service5.title", "Sandblasting & Coating"),
+      description: t(
+        "services.service5.description",
+        "Surface preparation and protective coating services for harsh environments."
+      ),
+      fullDescription: t(
+        "servicesDetails.sandblasting-coating.fullDescription",
+        "Our sandblasting and coating services protect industrial equipment, structures, and machinery from corrosion, wear, and environmental damage. We use advanced techniques and high-quality materials for long-lasting protection."
+      ),
+      features: t("servicesDetails.sandblasting-coating.features", {
+        returnObjects: true,
+        defaultValue: [
+          "Surface Preparation",
+          "Abrasive Blasting",
+          "Protective Coatings",
+          "Corrosion Prevention",
+          "Quality Inspection",
+          "Custom Solutions",
+        ],
+      }),
       image: service5,
-      // Using sandblasting-specific images
       gallery: [s1, s2, s3, s4],
       icon: Droplets,
       color: "#64748b",
-      features: [
-        "Surface Preparation",
-        "Abrasive Blasting",
-        "Protective Coatings",
-        "Corrosion Prevention",
-        "Quality Inspection",
-        "Custom Solutions",
-      ],
-      process: [
-        {
-          step: 1,
-          title: "Surface Assessment",
-          description: "Evaluate surface condition and requirements",
-        },
-        {
-          step: 2,
-          title: "Preparation",
-          description: "Surface cleaning and preparation",
-        },
-        {
-          step: 3,
-          title: "Sandblasting",
-          description: "Abrasive blasting for optimal surface",
-        },
-        {
-          step: 4,
-          title: "Coating Application",
-          description: "Apply protective coatings",
-        },
-        { step: 5, title: "Curing", description: "Proper curing and drying" },
-        {
-          step: 6,
-          title: "Quality Check",
-          description: "Final inspection and testing",
-        },
-      ],
-      stats: [
-        { icon: Clock, value: "1000+", label: "Projects" },
-        { icon: Users, value: "ISO", label: "Standards" },
-        { icon: Shield, value: "5+", label: "Year Warranty" },
-      ],
-      testimonials: [
-        {
-          name: "Thomas Wilson",
-          position: "Maintenance Manager, Heavy Industries",
-          content:
-            "The sandblasting and coating work has significantly extended the life of our equipment. Excellent quality and service.",
-          rating: 5,
-        },
-        {
-          name: "Amanda Brown",
-          position: "Operations Director, Marine Services",
-          content:
-            "Their corrosion protection solutions are outstanding. Our equipment withstands harsh marine conditions much better now.",
-          rating: 5,
-        },
-      ],
-      faq: [
-        {
-          question: "How long does coating protection last?",
-          answer:
-            "Depending on coating system and environmental conditions, our protective coatings typically last 5-10 years before requiring maintenance.",
-        },
-        {
-          question: "Do you offer mobile sandblasting services?",
-          answer:
-            "Yes, we have mobile sandblasting units that can be brought to your site for on-site surface preparation and coating application.",
-        },
-      ],
     },
     "manpower-rental": {
-      title: "Manpower Solutions",
-      description:
-        "Reliable manpower solutions providing skilled, certified professionals for industrial operations and project requirements.",
-      fullDescription:
-        "We provide skilled manpower solutions for various industrial sectors including construction, manufacturing, maintenance, and operations. Our workforce includes certified professionals, technicians, and skilled laborers ready to meet your project needs.",
+      title: t("services.service6.title", "Manpower Solutions"),
+      description: t(
+        "services.service6.description",
+        "Reliable manpower solutions providing skilled professionals for industrial operations."
+      ),
+      fullDescription: t(
+        "servicesDetails.manpower-rental.fullDescription",
+        "We provide skilled manpower solutions for various industrial sectors including construction, manufacturing, maintenance, and operations. Our workforce includes certified professionals, technicians, and skilled laborers ready to meet your project needs."
+      ),
+      features: t("servicesDetails.manpower-rental.features", {
+        returnObjects: true,
+        defaultValue: [
+          "Skilled Professionals",
+          "Certified Technicians",
+          "Flexible Staffing",
+          "Quality Assurance",
+          "Timely Deployment",
+          "Continuous Support",
+        ],
+      }),
       image: service6,
-      // Using manpower-specific images
       gallery: [M1, M2, M3, M4],
       icon: ManpowerUsers,
       color: "#059669",
-      features: [
-        "Skilled Professionals",
-        "Certified Technicians",
-        "Flexible Staffing",
-        "Quality Assurance",
-        "Timely Deployment",
-        "Continuous Support",
-      ],
-      process: [
-        {
-          step: 1,
-          title: "Requirement Analysis",
-          description: "Understand client manpower needs",
-        },
-        {
-          step: 2,
-          title: "Candidate Selection",
-          description: "Select qualified professionals",
-        },
-        {
-          step: 3,
-          title: "Screening & Verification",
-          description: "Background checks and verification",
-        },
-        {
-          step: 4,
-          title: "Deployment",
-          description: "Timely deployment of manpower",
-        },
-        {
-          step: 5,
-          title: "Performance Monitoring",
-          description: "Continuous performance assessment",
-        },
-        {
-          step: 6,
-          title: "Support & Replacement",
-          description: "Ongoing support and replacements",
-        },
-      ],
-      stats: [
-        { icon: Clock, value: "500+", label: "Professionals" },
-        { icon: Users, value: "24/7", label: "Availability" },
-        { icon: Shield, value: "95%", label: "Client Retention" },
-      ],
-      testimonials: [
-        {
-          name: "Richard Garcia",
-          position: "HR Director, Manufacturing Solutions",
-          content:
-            "Their manpower solutions have been invaluable for our peak production periods. The professionals they provide are skilled and reliable.",
-          rating: 5,
-        },
-        {
-          name: "Patricia Lee",
-          position: "Project Manager, Construction Plus",
-          content:
-            "We've used their temporary staffing for multiple projects. The quality of personnel and support they provide is exceptional.",
-          rating: 5,
-        },
-      ],
-      faq: [
-        {
-          question: "How quickly can you deploy manpower?",
-          answer:
-            "We can typically deploy qualified personnel within 48-72 hours for standard requests, and even faster for emergency situations.",
-        },
-        {
-          question: "Do you provide specialized technical personnel?",
-          answer:
-            "Yes, we have a database of specialized technicians and professionals across various industrial sectors with specific certifications and expertise.",
-        },
-      ],
     },
   };
 
@@ -627,13 +399,16 @@ const ServiceDetail = () => {
 
   if (!service) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div
+        className="min-h-screen flex items-center justify-center bg-gray-50"
+        dir={isArabic ? "rtl" : "ltr"}
+      >
         <div className="text-center">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Service Not Found
+            {t("common.text.serviceNotFound", "Service Not Found")}
           </h2>
           <Link to="/services" className="text-blue-600 hover:text-blue-800">
-            Back to Services
+            {t("common.buttons.backToServices", "Back to Services")}
           </Link>
         </div>
       </div>
@@ -690,8 +465,20 @@ const ServiceDetail = () => {
     setSelectedImage(service.gallery[prevIndex]);
   };
 
+  // RTL layout helper functions
+  const getMarginClass = (defaultClass, rtlClass) =>
+    isArabic ? rtlClass : defaultClass;
+  const getPositionClass = (defaultClass, rtlClass) =>
+    isArabic ? rtlClass : defaultClass;
+  const getFlexDirection = () => (isArabic ? "flex-row-reverse" : "flex-row");
+  const getTextAlign = () => (isArabic ? "text-right" : "text-left");
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div
+      className={`min-h-screen bg-gray-50 ${
+        isArabic ? "rtl" : "ltr"
+      } ${getTextAlign()}`}
+    >
       {/* Background Pattern */}
       <div
         className="fixed inset-0 z-0 opacity-5 pointer-events-none"
@@ -700,9 +487,8 @@ const ServiceDetail = () => {
         }}
       />
 
-      {/* Hero Section with Improved Image Gallery */}
-      <section className="relative overflow-hidden pt-12">
-        {/* Background Image with Overlay */}
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
           <div
             className="absolute inset-0 opacity-10"
@@ -722,16 +508,21 @@ const ServiceDetail = () => {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center`}
+          >
             {/* Content */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: isArabic ? 50 : -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center mb-6">
+              <div className={`flex items-center mb-6 ${getFlexDirection()}`}>
                 <motion.div
-                  className="p-3 rounded-lg mr-4 shadow-lg"
+                  className={`p-3 rounded-lg ${getMarginClass(
+                    "mr-4",
+                    "ml-4"
+                  )} shadow-lg`}
                   style={{ backgroundColor: service.color }}
                   whileHover={{ rotate: 15, scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 300, damping: 10 }}
@@ -744,75 +535,85 @@ const ServiceDetail = () => {
               </div>
 
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                {service.fullDescription}
+                {service.fullDescription || service.description}
               </p>
 
               {/* Stats with Animation */}
               <div className="grid grid-cols-3 gap-6 mb-8">
-                {service.stats.map((stat, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + index * 0.1 }}
-                    className="text-center"
-                    whileHover={{ y: -5 }}
-                  >
+                {service.stats?.map((stat, index) => {
+                  const StatIcon = [Clock, Users, Shield][index] || Clock;
+                  return (
                     <motion.div
-                      className="mx-auto mb-2 p-2 rounded-full inline-flex"
-                      style={{ backgroundColor: `${service.color}20` }}
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.2 + index * 0.1 }}
+                      className="text-center"
+                      whileHover={{ y: -5 }}
                     >
-                      <stat.icon
-                        className="h-6 w-6"
-                        style={{ color: service.color }}
-                      />
+                      <motion.div
+                        className="mx-auto mb-2 p-2 rounded-full inline-flex"
+                        style={{ backgroundColor: `${service.color}20` }}
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <StatIcon
+                          className="h-6 w-6"
+                          style={{ color: service.color }}
+                        />
+                      </motion.div>
+                      <motion.div
+                        className="text-2xl font-bold text-gray-900"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5 + index * 0.1 }}
+                      >
+                        {stat.value}
+                      </motion.div>
+                      <div className="text-sm text-gray-600">{stat.label}</div>
                     </motion.div>
-                    <motion.div
-                      className="text-2xl font-bold text-gray-900"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 + index * 0.1 }}
-                    >
-                      {stat.value}
-                    </motion.div>
-                    <div className="text-sm text-gray-600">{stat.label}</div>
-                  </motion.div>
-                ))}
+                  );
+                })}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className={`flex flex-col sm:${getFlexDirection()} gap-4`}>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center shadow-lg"
                   style={{ backgroundColor: service.color }}
                 >
-                  <Phone className="h-5 w-5 mr-2" />
-                  Get Free Quote
+                  <Phone
+                    className={`h-5 w-5 ${getMarginClass("mr-2", "ml-2")}`}
+                  />
+                  {t("common.buttons.getQuote", "Get Free Quote")}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="border-2 border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:border-gray-400 transition-colors flex items-center justify-center"
                 >
-                  <Info className="h-5 w-5 mr-2" />
-                  Download Brochure
+                  <Info
+                    className={`h-5 w-5 ${getMarginClass("mr-2", "ml-2")}`}
+                  />
+                  {t("common.buttons.downloadBrochure", "Download Brochure")}
                 </motion.button>
               </div>
             </motion.div>
 
-            {/* Improved Image Gallery Layout */}
+            {/* Image Gallery */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: isArabic ? -50 : 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
               className="relative h-96"
             >
               {/* Main Featured Image */}
               <motion.div
-                className="absolute top-0 right-0 w-2/3 h-2/3 rounded-2xl shadow-2xl overflow-hidden z-20 cursor-pointer"
+                className={`absolute ${getPositionClass(
+                  "right-0",
+                  "left-0"
+                )} top-0 w-2/3 h-2/3 rounded-2xl shadow-2xl overflow-hidden z-20 cursor-pointer`}
                 whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 onClick={() => openImageGallery(0)}
@@ -824,14 +625,23 @@ const ServiceDetail = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div className="p-4 text-white">
-                    <h3 className="font-semibold">Featured Project</h3>
-                    <p className="text-sm opacity-90">Click to explore</p>
+                    <h3 className="font-semibold">
+                      {t("common.text.featuredProject", "Featured Project")}
+                    </h3>
+                    <p className="text-sm opacity-90">
+                      {t("common.text.clickToExplore", "Click to explore")}
+                    </p>
                   </div>
                 </div>
               </motion.div>
 
               {/* Secondary Images Grid */}
-              <div className="absolute bottom-0 left-0 w-2/3 h-1/3 grid grid-cols-2 gap-2">
+              <div
+                className={`absolute ${getPositionClass(
+                  "left-0",
+                  "right-0"
+                )} bottom-0 w-2/3 h-1/3 grid grid-cols-2 gap-2`}
+              >
                 {service.gallery.slice(1, 3).map((image, index) => (
                   <motion.div
                     key={index}
@@ -852,35 +662,19 @@ const ServiceDetail = () => {
                 ))}
               </div>
 
-              {/* Third Image - Overlapping */}
-              {service.gallery.length > 3 && (
-                <motion.div
-                  className="absolute top-4 left-1/2 w-1/3 h-1/3 rounded-xl shadow-xl overflow-hidden cursor-pointer z-30"
-                  whileHover={{ scale: 1.08, rotate: 2 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  onClick={() => openImageGallery(3)}
-                >
-                  <img
-                    src={service.gallery[3]}
-                    alt={`${service.title} Project 4`}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-start justify-end">
-                    <div className="p-2">
-                      <Maximize2 className="h-4 w-4 text-white" />
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-
               {/* Gallery Badge */}
               <motion.div
-                className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold shadow-lg z-40"
+                className={`absolute top-2 ${getPositionClass(
+                  "right-2",
+                  "left-2"
+                )} bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-semibold shadow-lg z-40`}
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                {service.gallery.length} Photos
+                {t(`${service.gallery.length}`, {
+                  count: service.gallery.length,
+                })}
               </motion.div>
             </motion.div>
           </div>
@@ -890,7 +684,9 @@ const ServiceDetail = () => {
       {/* Tab Navigation */}
       <section className="sticky top-16 z-40 bg-white border-b shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div
+            className={`flex items-center justify-between ${getFlexDirection()}`}
+          >
             <div className="flex overflow-x-auto">
               {["overview", "features", "process", "testimonials", "faq"].map(
                 (tab) => (
@@ -908,7 +704,10 @@ const ServiceDetail = () => {
                       color: activeTab === tab ? service.color : "",
                     }}
                   >
-                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                    {t(
+                      `common.tabs.${tab}`,
+                      tab.charAt(0).toUpperCase() + tab.slice(1)
+                    )}
                   </button>
                 )
               )}
@@ -922,9 +721,12 @@ const ServiceDetail = () => {
                 }
                 className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors flex items-center"
               >
-                More Services
+                {t("common.buttons.moreServices", "More Services")}
                 <ChevronDown
-                  className={`ml-2 h-4 w-4 transition-transform ${
+                  className={`${getMarginClass(
+                    "ml-2",
+                    "mr-2"
+                  )} h-4 w-4 transition-transform ${
                     isServicesDropdownOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -932,12 +734,16 @@ const ServiceDetail = () => {
 
               {/* Dropdown Menu */}
               {isServicesDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50">
+                <div
+                  className={`absolute ${getPositionClass(
+                    "right-0",
+                    "left-0"
+                  )} mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 py-1 z-50`}
+                >
                   {services.map((serviceItem) => (
                     <button
                       key={serviceItem.id}
                       onClick={() => {
-                        // Navigate to the service page
                         navigate(`/services/${serviceItem.id}`);
                         setIsServicesDropdownOpen(false);
                       }}
@@ -968,54 +774,80 @@ const ServiceDetail = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
                   <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                    About Our {service.title} Service
+                    {t(
+                      "common.headings.aboutService",
+                      "About Our Service",
+                      // { service: service.title }
+                    )}
                   </h2>
                   <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    {service.fullDescription}
+                    {service.fullDescription || service.description}
                   </p>
                   <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                    Our team of experienced professionals is committed to
-                    delivering exceptional results that meet your specific
-                    requirements. We use latest technologies and industry best
-                    practices to ensure quality, efficiency, and safety in every
-                    project we undertake.
+                    {isArabic
+                      ? "فريقنا من المحترفين ذوي الخبرة ملتزم بتقديم نتائج استثنائية تلبي متطلباتك المحددة. نستخدم أحدث التقنيات وأفضل الممارسات في الصناعة لضمان الجودة والكفاءة والسلامة في كل مشروع نقوم به."
+                      : "Our team of experienced professionals is committed to delivering exceptional results that meet your specific requirements. We use latest technologies and industry best practices to ensure quality, efficiency, and safety in every project we undertake."}
                   </p>
 
                   <div className="space-y-4">
-                    <div className="flex items-start">
+                    <div className={`flex items-start ${getFlexDirection()}`}>
                       <CheckCircle
-                        className="h-6 w-6 mr-3 flex-shrink-0"
+                        className={`h-6 w-6 ${getMarginClass(
+                          "mr-3",
+                          "ml-3"
+                        )} flex-shrink-0`}
                         style={{ color: service.color }}
                       />
                       <p className="text-gray-700">
-                        Industry-leading expertise with years of experience
+                        {t(
+                          "common.features.industryExpertise",
+                          "Industry-leading expertise with years of experience"
+                        )}
                       </p>
                     </div>
-                    <div className="flex items-start">
+                    <div className={`flex items-start ${getFlexDirection()}`}>
                       <CheckCircle
-                        className="h-6 w-6 mr-3 flex-shrink-0"
+                        className={`h-6 w-6 ${getMarginClass(
+                          "mr-3",
+                          "ml-3"
+                        )} flex-shrink-0`}
                         style={{ color: service.color }}
                       />
                       <p className="text-gray-700">
-                        Customized solutions tailored to your specific needs
+                        {t(
+                          "common.features.customizedSolutions",
+                          "Customized solutions tailored to your specific needs"
+                        )}
                       </p>
                     </div>
-                    <div className="flex items-start">
+                    <div className={`flex items-start ${getFlexDirection()}`}>
                       <CheckCircle
-                        className="h-6 w-6 mr-3 flex-shrink-0"
+                        className={`h-6 w-6 ${getMarginClass(
+                          "mr-3",
+                          "ml-3"
+                        )} flex-shrink-0`}
                         style={{ color: service.color }}
                       />
                       <p className="text-gray-700">
-                        Commitment to quality, safety, and timely delivery
+                        {t(
+                          "common.features.qualityCommitment",
+                          "Commitment to quality, safety, and timely delivery"
+                        )}
                       </p>
                     </div>
-                    <div className="flex items-start">
+                    <div className={`flex items-start ${getFlexDirection()}`}>
                       <CheckCircle
-                        className="h-6 w-6 mr-3 flex-shrink-0"
+                        className={`h-6 w-6 ${getMarginClass(
+                          "mr-3",
+                          "ml-3"
+                        )} flex-shrink-0`}
                         style={{ color: service.color }}
                       />
                       <p className="text-gray-700">
-                        Competitive pricing with transparent cost structures
+                        {t(
+                          "common.features.competitivePricing",
+                          "Competitive pricing with transparent cost structures"
+                        )}
                       </p>
                     </div>
                   </div>
@@ -1024,12 +856,15 @@ const ServiceDetail = () => {
                 <div>
                   <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
                     <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                      Why Choose Us
+                      {t("common.headings.whyChooseUs", "Why Choose Us")}
                     </h3>
                     <div className="space-y-6">
-                      <div className="flex items-start">
+                      <div className={`flex items-start ${getFlexDirection()}`}>
                         <div
-                          className="p-3 rounded-lg mr-4"
+                          className={`p-3 rounded-lg ${getMarginClass(
+                            "mr-4",
+                            "ml-4"
+                          )}`}
                           style={{ backgroundColor: `${service.color}20` }}
                         >
                           <Award
@@ -1039,17 +874,24 @@ const ServiceDetail = () => {
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-1">
-                            Certified Professionals
+                            {t(
+                              "common.features.certifiedProfessionals",
+                              "Certified Professionals"
+                            )}
                           </h4>
                           <p className="text-gray-600 text-sm">
-                            Our team consists of certified professionals with
-                            extensive experience in the industry.
+                            {isArabic
+                              ? "يتكون فريقنا من محترفين معتمدين يتمتعون بخبرة واسعة في الصناعة."
+                              : "Our team consists of certified professionals with extensive experience in the industry."}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-start">
+                      <div className={`flex items-start ${getFlexDirection()}`}>
                         <div
-                          className="p-3 rounded-lg mr-4"
+                          className={`p-3 rounded-lg ${getMarginClass(
+                            "mr-4",
+                            "ml-4"
+                          )}`}
                           style={{ backgroundColor: `${service.color}20` }}
                         >
                           <TrendingUp
@@ -1059,18 +901,24 @@ const ServiceDetail = () => {
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-1">
-                            Proven Track Record
+                            {t(
+                              "common.features.provenTrackRecord",
+                              "Proven Track Record"
+                            )}
                           </h4>
                           <p className="text-gray-600 text-sm">
-                            We have a proven track record of successfully
-                            completing projects for clients across various
-                            industries.
+                            {isArabic
+                              ? "لدينا سجل حافل مثبت في إكمال المشاريع بنجاح للعملاء عبر مختلف الصناعات."
+                              : "We have a proven track record of successfully completing projects for clients across various industries."}
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-start">
+                      <div className={`flex items-start ${getFlexDirection()}`}>
                         <div
-                          className="p-3 rounded-lg mr-4"
+                          className={`p-3 rounded-lg ${getMarginClass(
+                            "mr-4",
+                            "ml-4"
+                          )}`}
                           style={{ backgroundColor: `${service.color}20` }}
                         >
                           <Shield
@@ -1080,12 +928,15 @@ const ServiceDetail = () => {
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-1">
-                            Quality Assurance
+                            {t(
+                              "common.features.qualityAssurance",
+                              "Quality Assurance"
+                            )}
                           </h4>
                           <p className="text-gray-600 text-sm">
-                            We adhere to strict quality standards and ensure
-                            that all our services meet or exceed industry
-                            requirements.
+                            {isArabic
+                              ? "نلتزم بمعايير الجودة الصارمة ونتأكد من أن جميع خدماتنا تلبي أو تتجاوز متطلبات الصناعة."
+                              : "We adhere to strict quality standards and ensure that all our services meet or exceed industry requirements."}
                           </p>
                         </div>
                       </div>
@@ -1112,11 +963,13 @@ const ServiceDetail = () => {
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Our <span style={{ color: service.color }}>Capabilities</span>
+                  {t("common.headings.ourCapabilities", "Our Capabilities")}
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Comprehensive solutions tailored to meet your specific
-                  requirements
+                  {t(
+                    "common.text.comprehensiveSolutions",
+                    "Comprehensive solutions tailored to meet your specific requirements"
+                  )}
                 </p>
               </motion.div>
 
@@ -1127,7 +980,7 @@ const ServiceDetail = () => {
                 viewport={{ once: true }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
-                {service.features.map((feature, index) => (
+                {service.features?.map((feature, index) => (
                   <motion.div
                     key={index}
                     variants={itemVariants}
@@ -1153,8 +1006,9 @@ const ServiceDetail = () => {
                       {feature}
                     </h3>
                     <p className="text-gray-600 text-sm">
-                      Professional implementation with quality assurance and
-                      timely delivery.
+                      {isArabic
+                        ? "تنفيذ احترافي مع ضمان الجودة والتسليم في الوقت المحدد."
+                        : "Professional implementation with quality assurance and timely delivery."}
                     </p>
                   </motion.div>
                 ))}
@@ -1178,10 +1032,13 @@ const ServiceDetail = () => {
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Our <span style={{ color: service.color }}>Process</span>
+                  {t("common.headings.ourProcess", "Our Process")}
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Step-by-step approach ensuring quality and efficiency
+                  {t(
+                    "common.text.stepByStepApproach",
+                    "Step-by-step approach ensuring quality and efficiency"
+                  )}
                 </p>
               </motion.div>
 
@@ -1190,9 +1047,9 @@ const ServiceDetail = () => {
                 <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2 z-0" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {service.process.map((step, index) => (
+                  {service.process?.map((step, index) => (
                     <motion.div
-                      key={step.step}
+                      key={step.step || index}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
@@ -1202,9 +1059,11 @@ const ServiceDetail = () => {
                         className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 h-full"
                         whileHover={{ y: -5 }}
                       >
-                        <div className="flex items-center mb-4">
+                        <div
+                          className={`flex items-center mb-4 ${getFlexDirection()}`}
+                        >
                           <motion.div
-                            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4 z-10"
+                            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg z-10"
                             style={{ backgroundColor: service.color }}
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             transition={{
@@ -1247,16 +1106,22 @@ const ServiceDetail = () => {
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Client{" "}
-                  <span style={{ color: service.color }}>Testimonials</span>
+                  {t(
+                    "common.headings.clientTestimonials",
+                    "Client Testimonials"
+                  )}
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  What our clients say about our {service.title} service
+                  {t(
+                    "common.text.whatClientsSay",
+                    "What our clients say about our {service} service",
+                    { service: service.title }
+                  )}
                 </p>
               </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {service.testimonials.map((testimonial, index) => (
+                {service.testimonials?.map((testimonial, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 30 }}
@@ -1265,9 +1130,11 @@ const ServiceDetail = () => {
                     whileHover={{ y: -5 }}
                     className="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100"
                   >
-                    <div className="flex items-center mb-4">
+                    <div
+                      className={`flex items-center mb-4 ${getFlexDirection()}`}
+                    >
                       <Quote
-                        className="h-8 w-8 mr-2"
+                        className={`h-8 w-8 ${getMarginClass("mr-2", "ml-2")}`}
                         style={{ color: service.color, opacity: 0.5 }}
                       />
                       <div className="flex">
@@ -1276,7 +1143,7 @@ const ServiceDetail = () => {
                             key={i}
                             size={16}
                             className={
-                              i < testimonial.rating
+                              i < (testimonial.rating || 5)
                                 ? "fill-yellow-400 text-yellow-400"
                                 : "fill-gray-200 text-gray-200"
                             }
@@ -1317,16 +1184,19 @@ const ServiceDetail = () => {
                 className="text-center mb-12"
               >
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                  Frequently Asked{" "}
-                  <span style={{ color: service.color }}>Questions</span>
+                  {t("common.headings.faq", "Frequently Asked Questions")}
                 </h2>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Common questions about our {service.title} service
+                  {t(
+                    "common.text.commonQuestions",
+                    "Common questions about our {service} service",
+                    { service: service.title }
+                  )}
                 </p>
               </motion.div>
 
               <div className="max-w-3xl mx-auto">
-                {service.faq.map((item, index) => (
+                {service.faq?.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
@@ -1335,16 +1205,20 @@ const ServiceDetail = () => {
                     className="mb-6"
                   >
                     <div className="bg-white p-6 rounded-xl shadow-md border border-gray-100">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
+                      <h3
+                        className={`text-lg font-semibold text-gray-900 mb-3 flex items-center ${getFlexDirection()}`}
+                      >
                         <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center mr-3 text-white font-bold text-sm"
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm"
                           style={{ backgroundColor: service.color }}
                         >
                           Q
                         </div>
-                        {item.question}
+                        <span className={getMarginClass("ml-3", "mr-3")}>
+                          {item.question}
+                        </span>
                       </h3>
-                      <div className="pl-11">
+                      <div className={isArabic ? "pr-11" : "pl-11"}>
                         <p className="text-gray-600">{item.answer}</p>
                       </div>
                     </div>
@@ -1375,43 +1249,65 @@ const ServiceDetail = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Get Started?
+              {t("common.headings.readyToStart", "Ready to Get Started?")}
             </h2>
             <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Contact us today for a free consultation and let's discuss how we
-              can help with your {service.title} needs.
+              {t(
+                "common.text.freeConsultation",
+                "Contact us today for a free consultation and let's discuss how we can help with your {service} needs.",
+                { service: service.title }
+              )}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div
+              className={`flex flex-col sm:${getFlexDirection()} gap-4 justify-center`}
+            >
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-white text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center shadow-lg"
               >
-                <Phone className="h-5 w-5 mr-2" />
-                Call Now
+                <Phone
+                  className={`h-5 w-5 ${getMarginClass("mr-2", "ml-2")}`}
+                />
+                {t("common.buttons.callNow", "Call Now")}
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors flex items-center justify-center"
               >
-                <Mail className="h-5 w-5 mr-2" />
-                Send Email
+                <Mail className={`h-5 w-5 ${getMarginClass("mr-2", "ml-2")}`} />
+                {t("common.buttons.sendEmail", "Send Email")}
               </motion.button>
             </div>
 
-            <div className="mt-8 flex items-center justify-center space-x-8 text-sm">
+            <div
+              className={`mt-8 flex items-center justify-center space-x-8 text-sm ${getFlexDirection()}`}
+            >
               <div className="flex items-center">
-                <Calendar className="h-5 w-5 mr-2" />
-                <span>Available 24/7</span>
+                <Calendar
+                  className={`h-5 w-5 ${getMarginClass("mr-2", "ml-2")}`}
+                />
+                <span>{t("common.text.available247", "Available 24/7")}</span>
               </div>
               <div className="flex items-center">
-                <Shield className="h-5 w-5 mr-2" />
-                <span>100% Satisfaction</span>
+                <Shield
+                  className={`h-5 w-5 ${getMarginClass("mr-2", "ml-2")}`}
+                />
+                <span>
+                  {t("common.text.satisfaction", "100% Satisfaction")}
+                </span>
               </div>
               <div className="flex items-center">
-                <Award className="h-5 w-5 mr-2" />
-                <span>Certified Professionals</span>
+                <Award
+                  className={`h-5 w-5 ${getMarginClass("mr-2", "ml-2")}`}
+                />
+                <span>
+                  {t(
+                    "common.text.certifiedProfessionals",
+                    "Certified Professionals"
+                  )}
+                </span>
               </div>
             </div>
           </motion.div>
@@ -1436,29 +1332,34 @@ const ServiceDetail = () => {
               className="relative w-auto max-w-6xl max-h-[90vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* FIXED IMAGE SIZING */}
-             <img
-  src={selectedImage}
-  alt="Gallery Image"
-  className="w-[600px] h-[400px] object-cover rounded-lg shadow-2xl"
-/>
+              <img
+                src={selectedImage}
+                alt="Gallery Image"
+                className="w-[600px] h-[400px] object-cover rounded-lg shadow-2xl"
+              />
 
               {/* Navigation Buttons */}
               {service.gallery.length > 1 && (
                 <>
                   <motion.button
-                    // whileHover={{ scale: 1.1 }}
-                    // whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={prevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                    className={`absolute ${getPositionClass(
+                      "left-4",
+                      "right-4"
+                    )} top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg`}
                   >
                     <ChevronLeft className="h-6 w-6 text-gray-700" />
                   </motion.button>
                   <motion.button
-                    // whileHover={{ scale: 1.1 }}
-                    // whileTap={{ scale: 0.9 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     onClick={nextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                    className={`absolute ${getPositionClass(
+                      "right-4",
+                      "left-4"
+                    )} top-1/2 -translate-y-1/2 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg`}
                   >
                     <ChevronRight className="h-6 w-6 text-gray-700" />
                   </motion.button>
@@ -1470,7 +1371,10 @@ const ServiceDetail = () => {
                 whileHover={{ scale: 1.1, rotate: 90 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={closeImageGallery}
-                className="absolute top-4 right-4 p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg"
+                className={`absolute top-4 ${getPositionClass(
+                  "right-4",
+                  "left-4"
+                )} p-3 bg-white/90 backdrop-blur-sm rounded-full shadow-lg`}
               >
                 <X className="h-6 w-6 text-gray-700" />
               </motion.button>
@@ -1483,6 +1387,23 @@ const ServiceDetail = () => {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Back to Top Button */}
+      {showBackToTop && (
+        <motion.button
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className={`fixed ${getPositionClass(
+            "right-8",
+            "left-8"
+          )} bottom-8 p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-colors z-40`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <ArrowUp className="h-6 w-6" />
+        </motion.button>
+      )}
     </div>
   );
 };

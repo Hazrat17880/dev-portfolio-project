@@ -61,59 +61,74 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Left Column */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="bg-white p-2 rounded-lg">
-                <img 
-                  src={companyLogo} 
-                  alt={t("footer.companyName")} 
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
-              <div>
-                <h3 className="text-2xl font-bold">{t("footer.companyName")}</h3>
-                <p className="text-gray-400 text-sm">{t("footer.tagline")}</p>
-              </div>
-            </div>
+    {/* Left Column */}
+<div className="space-y-6">
+  <div
+    className="flex items-center cursor-pointer group text-center px-1 space-x-3"
+    onClick={() => handleNavClick("home")}
+  >
+    {/* Logo on the left */}
+    <div className="relative h-12 w-12 sm:h-12 sm:w-12 rounded-md overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5">
+      <img
+        src={companyLogo}
+        alt={t("footer.companyName")}
+        className="w-full h-full object-contain"
+      />
+    </div>
 
-            <p className="text-gray-300 leading-relaxed max-w-md">
-              {t("footer.description")}
-            </p>
+    {/* Text next to the logo */}
+    <div className="flex flex-col leading-none">
+      <h1 className="text-[12px] sm:text-sm font-semibold text-white tracking-tight m-0 p-0">
+        شركة وحيد لبنان
+      </h1>
+      <h2 className="text-[11px] sm:text-sm font-semibold text-blue-900 tracking-tight m-0 p-0">
+        <span className="text-red-600">A</span> 1 CONTRACT
+      </h2>
+    </div>
+  </div>
 
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3 text-gray-300">
-                <Phone className="h-5 w-5 text-blue-400" />
-                <span>{t("footer.phone")}</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-300">
-                <Mail className="h-5 w-5 text-blue-400" />
-                <span>{t("footer.email")}</span>
-              </div>
-              <div className="flex items-start space-x-3 text-gray-300">
-                <MapPin className="h-5 w-5 text-blue-400 mt-1" />
-                <span>{t("footer.address")}</span>
-              </div>
-              <div className="flex items-center space-x-3 text-gray-300">
-                <Clock className="h-5 w-5 text-blue-400" />
-                <span>{t("footer.hours")}</span>
-              </div>
-            </div>
+  {/* Company description */}
+  <p className="text-gray-300 leading-relaxed max-w-md">
+    {t("footer.description")}
+  </p>
 
-            <div className="flex space-x-4 pt-4">
-              {socialLinks.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.href}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-gray-800 p-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
-                  aria-label={social.name}
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
-          </div>
+  {/* Contact Info */}
+  <div className="space-y-3">
+    <div className="flex items-center space-x-3 text-gray-300">
+      <Phone className="h-5 w-5 text-blue-400" />
+      <span>{t("footer.phone")}</span>
+    </div>
+    <div className="flex items-center space-x-3 text-gray-300">
+      <Mail className="h-5 w-5 text-blue-400" />
+      <span>{t("footer.email")}</span>
+    </div>
+    <div className="flex items-start space-x-3 text-gray-300">
+      <MapPin className="h-5 w-5 text-blue-400 mt-1" />
+      <span>{t("footer.address")}</span>
+    </div>
+    <div className="flex items-center space-x-3 text-gray-300">
+      <Clock className="h-5 w-5 text-blue-400" />
+      <span>{t("footer.hours")}</span>
+    </div>
+  </div>
+
+  {/* Social Links */}
+  <div className="flex space-x-4 pt-4">
+    {socialLinks.map((social, index) => (
+      <motion.a
+        key={index}
+        href={social.href}
+        whileHover={{ scale: 1.1, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+        className="bg-gray-800 p-2 rounded-lg hover:bg-blue-600 transition-colors duration-300"
+        aria-label={social.name}
+      >
+        {social.icon}
+      </motion.a>
+    ))}
+  </div>
+</div>
+
 
           {/* Right Column */}
           <div className="bg-gray-800 rounded-xl overflow-hidden h-80 lg:h-full relative">
