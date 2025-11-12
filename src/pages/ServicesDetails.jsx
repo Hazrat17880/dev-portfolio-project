@@ -1342,8 +1342,8 @@ const ServiceDetail = () => {
               {service.gallery.length > 1 && (
                 <>
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    // whileHover={{ scale: 1.1 }}
+                    // whileTap={{ scale: 0.9 }}
                     onClick={prevImage}
                     className={`absolute ${getPositionClass(
                       "left-4",
@@ -1353,8 +1353,8 @@ const ServiceDetail = () => {
                     <ChevronLeft className="h-6 w-6 text-gray-700" />
                   </motion.button>
                   <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                    // whileHover={{ scale: 1.1 }}
+                    // whileTap={{ scale: 0.9 }}
                     onClick={nextImage}
                     className={`absolute ${getPositionClass(
                       "right-4",
