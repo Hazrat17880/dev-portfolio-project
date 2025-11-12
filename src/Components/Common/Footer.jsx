@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
   Phone, 
@@ -18,11 +19,19 @@ import {
   Users
 } from "lucide-react";
 
-import companyLogo from "../../assets/Images/logo.png"
+import companyLogo from "../../assets/Images/logo.png";
 
 const Footer = () => {
+  const navigate = useNavigate()
   const { t, i18n } = useTranslation();
   const currentYear = new Date().getFullYear();
+
+
+
+  const handleNavClick = (value)=>{
+    console.log("your value ",value);
+    navigate('/');
+  }
 
   const isRTL = i18n.language === "ar";
 
