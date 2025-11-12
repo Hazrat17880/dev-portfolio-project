@@ -386,7 +386,7 @@ const ContactPage = () => {
               <motion.button 
                 className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center shadow-lg" 
                 whileHover={{ scale: 1.05 }} 
-                whileTap={{ scale: 0.95 }}
+                 whileTap={{ scale: 0.95 }}
               >
                 <Phone className="h-5 w-5 mr-2" /> 
                 {t("cta.callNow", "Call Now")}

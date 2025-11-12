@@ -135,7 +135,7 @@ const Navbar = () => {
                   شركة وحيد لبنان
                 </h1>
                 <h2 className="text-[11px] sm:text-sm font-semibold text-blue-900 tracking-tight m-0 p-0">
-                  <span className="text-red-600">A</span> 1 CONTRACT
+                  <span className="text-red-600">A</span> 1 CONTRACTOR
                 </h2>
               </div>
             </div>

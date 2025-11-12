@@ -162,7 +162,7 @@
         "hours": "Sun - Thu: 8:00 AM - 6:00 PM"
       }
     }
-  },
+  }, 
 
   "cta": {
     "title": "Ready to Start Your Project?",
@@ -283,13 +283,6 @@
     }
   },
 
-  "cta": {
-    "title": "Ready to Start Your Project?",
-    "subtitle": "Contact us today to discuss your industrial construction needs",
-    "contact": "Contact Us",
-    "quote": "Get Quote"
-  }
-,
 
   "_comment": "Services Pages",
   "services": {

@@ -7,7 +7,7 @@ import { Flame, Zap, Shield, Hammer, Droplets, Users } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 // Images
-import service1 from "../../assets/Images/services1.jpeg";
+import service1 from "../../assets/Images/servicescons1.jpg";
 import service4 from "../../assets/Images/services4.jpg";
 import service11 from "../../assets/Images/service11.jpg";
 import service9 from "../../assets/Images/services9.jpg";
