@@ -215,7 +215,7 @@ const AboutPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-white border-t border-gray-200">
+      {/* <section className="py-16 bg-white border-t border-gray-200">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{t("cta.title")}</h2>
           <p className="text-gray-600 mb-6">{t("cta.subtitle")}</p>
@@ -230,7 +230,7 @@ const AboutPage = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
