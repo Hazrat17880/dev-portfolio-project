@@ -18,7 +18,7 @@ import {
   Users
 } from "lucide-react";
 
-import companyLogo from "../../assets/Images/logo.PNG";
+import companyLogo from "../../assets/Images/logo.png";
 
 const Footer = () => {
   const { t, i18n } = useTranslation();

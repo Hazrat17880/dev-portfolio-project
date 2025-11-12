@@ -1,4 +1,5 @@
 {
+  "_comment": "Navigation & Global Components",
   "navbar": {
     "home": "Home",
     "aboutUs": "About Us",
@@ -21,7 +22,7 @@
     "subscribe": "Subscribe",
     "isoTitle": "ISO 9001 Certified",
     "isoDesc": "Quality Management",
-    "companyName": "A1 Contructing",
+    "companyName": "A1 Constructing",
     "tagline": "Industrial Excellence",
     "description": "Leading industrial construction company with over 15 years of experience in delivering high-quality construction, safety systems, and maintenance solutions across various industries.",
     "phone": "+971 4 123 4567",
@@ -40,9 +41,8 @@
     "contactUs": "Contact Us"
   },
 
-  "_comment": "Home paeg testimonial  ",
-
-  "testimonials": {
+  "_comment": "Home Page Testimonials",
+  "homeTestimonials": {
     "sectionTitle": "Trusted by Industry",
     "sectionHighlight": "Clients",
     "sectionSubtitle": "Discover why leading companies choose us for their industrial construction needs. Quality, reliability, and excellence in every project.",
@@ -90,14 +90,13 @@
     }
   },
 
-  "_comment": "This section are the about us page ",
-
-
+ 
+  "_comment": "About Us Page Sections",
   "hero": {
     "mainTitle": "About Our Startup",
     "subtitle": "Leading industrial construction with innovation, precision, and unwavering commitment to excellence for over 15 years.",
     "sectionTitle": "Let's Discuss Your Industrial Project",
-    "highlight": "Industrial Project",
+    "highlight": "Industrial Project", 
     "sectionSubtitle": "Our expert team is ready to bring your vision to life with precision and excellence",
     "buildingTheFuture": "Building The Future With",
     "strength": "Strength",
@@ -105,6 +104,143 @@
     "getQuote": "Get a Quote",
     "ourServices": "Our Services"
   },
+
+
+
+
+  "_comment": "Contact Page Sections",
+  "contact": {
+    "title": "Contact Us",
+    "description": "Get in touch with our expert team to discuss your industrial construction needs",
+    "phone": {
+      "title": "Phone",
+      "text": "+971 4 123 4567"
+    },
+    "email": {
+      "title": "Email", 
+      "text": "info@constructpro.ae"
+    },
+    "address": {
+      "title": "Address",
+      "text": "Dubai Industrial Park, Plot 123"
+    },
+    "hours": {
+      "text": "Sun - Thu: 8:00 AM - 6:00 PM"
+    },
+    "formTitle": "Get In Touch",
+    "form": {
+      "name": "Full Name",
+      "company": "Company Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "service": "Service Interested In",
+      "message": "Message",
+      "placeholderName": "Enter your full name",
+      "placeholderCompany": "Enter your company name",
+      "placeholderEmail": "Enter your email address",
+      "placeholderPhone": "Enter your phone number",
+      "placeholderMessage": "Tell us about your project requirements...",
+      "selectService": "Select a service",
+      "submit": "Send Message",
+      "success": "Message Sent!"
+    },
+    "officesTitle": "Our Offices",
+    "offices": {
+      "dubai": {
+        "city": "Dubai Office",
+        "address": "Dubai Industrial Park, Plot 123, Street 45, Dubai, UAE",
+        "hours": "Sun - Thu: 8:00 AM - 6:00 PM"
+      },
+      "abudhabi": {
+        "city": "Abu Dhabi Office", 
+        "address": "Mussafah Industrial Area, Sector 10, Abu Dhabi, UAE",
+        "hours": "Sun - Thu: 8:00 AM - 6:00 PM"
+      },
+      "sharjah": {
+        "city": "Sharjah Office",
+        "address": "Industrial Area 12, Sharjah, UAE",
+        "hours": "Sun - Thu: 8:00 AM - 6:00 PM"
+      }
+    }
+  },
+
+  "cta": {
+    "title": "Ready to Start Your Project?",
+    "subtitle": "Contact us today for a free consultation and quote",
+    "callNow": "Call Now",
+    "emailUs": "Email Us",
+    "features": [
+      "24/7 Support Available",
+      "Free Consultation",
+      "Quick Response Time",
+      "Expert Advice"
+    ]
+  }
+,
+
+
+
+
+  "stats": {
+    "yearsExperience": "Years Experience",
+    "professionals": "Professionals",
+    "projects": "Projects Completed", 
+    "awards": "Awards Won"
+  },
+
+  "story": {
+    "title": "Our Story",
+    "p1": "Founded in 2008, A1 Constructing has been at the forefront of industrial construction, delivering innovative solutions across various sectors including manufacturing, oil & gas, and infrastructure.",
+    "p2": "Our journey began with a simple vision: to build industrial facilities that not only meet but exceed client expectations through superior craftsmanship, cutting-edge technology, and unwavering commitment to safety.",
+    "quality": "Quality Assurance",
+    "growth": "Sustainable Growth"
+  },
+
+  "values": {
+    "title": "Our Core Values",
+    "subtitle": "The principles that guide everything we do",
+    "safety": "Safety First",
+    "safetyDesc": "Prioritizing the well-being of our team, clients, and communities in every project.",
+    "quality": "Quality Excellence", 
+    "qualityDesc": "Delivering superior craftsmanship and materials in every aspect of our work.",
+    "integrity": "Integrity",
+    "integrityDesc": "Building trust through transparency, honesty, and ethical business practices.",
+    "innovation": "Innovation",
+    "innovationDesc": "Embracing new technologies and methods to deliver better solutions."
+  },
+
+  "team": {
+    "title": "Our Leadership Team",
+    "subtitle": "Experienced professionals driving our success",
+    "members": {
+      "john": {
+        "position": "Chief Executive Officer",
+        "experience": "20+ years in construction"
+      },
+      "sarah": {
+        "position": "Operations Director", 
+        "experience": "15+ years in project management"
+      },
+      "michael": {
+        "position": "Technical Director",
+        "experience": "18+ years in engineering"
+      },
+      "emily": {
+        "position": "Safety Manager",
+        "experience": "12+ years in industrial safety"
+      }
+    }
+  },
+
+  "cta": {
+    "title": "Ready to Start Your Project?",
+    "subtitle": "Contact us today to discuss your industrial construction needs",
+    "contact": "Contact Us",
+    "quote": "Get Quote"
+  }
+,
+
+  "_comment": "Services Pages",
   "services": {
     "sectionTitle": "Our Services",
     "sectionSubtitle": "Delivering world-class industrial and construction services with innovation, precision, and reliability that drive long-term value for every client.",
@@ -134,138 +270,255 @@
     }
   },
 
-  "stats": {
-    "yearsExperience": "Years Experience",
-    "professionals": "Professionals",
-    "projects": "Projects",
-    "awards": "Awards"
-  },
-  "story": {
-    "title": "Our Story",
-    "p1": "Founded in 2009, ConstructPro began with a vision to revolutionize industrial construction. What started as a small team with big dreams has grown into an industry leader trusted by clients worldwide.",
-    "p2": "Our journey is built on a foundation of excellence, innovation, and an unwavering commitment to delivering exceptional results. Every project reflects our dedication to quality and client satisfaction.",
-    "quality": "Quality Focused",
-    "growth": "Growth Mindset"
-  },
-  "values": {
-    "title": "Our Values",
-    "subtitle": "The principles that guide our work and define our culture",
-    "safety": "Safety First",
-    "safetyDesc": "Prioritizing safety in every project for team and client well-being",
-    "quality": "Quality Excellence",
-    "qualityDesc": "Delivering exceptional quality that exceeds industry standards",
-    "integrity": "Integrity",
-    "integrityDesc": "Building trust through transparent communication and ethics",
-    "innovation": "Innovation",
-    "innovationDesc": "Embracing cutting-edge technology and creative solutions"
-  },
-  "team": {
-    "title": "Leadership Team",
-    "subtitle": "Experienced professionals driving our success",
-    "members": {
-      "john": { "position": "CEO & Founder", "experience": "20+ years" },
-      "sarah": { "position": "COO", "experience": "18+ years" },
-      "michael": {
-        "position": "Technical Director",
-        "experience": "15+ years"
-      },
-      "emily": { "position": "HR Director", "experience": "12+ years" }
+  "_comment": "Services Details - Individual Service Pages",
+  "servicesDetails": {
+    "civil-construction": {
+      "title": "Civil Construction",
+      "description": "High-quality construction services for factories, warehouses, and large-scale facilities with precise engineering and project management.",
+      "fullDescription": "We specialize in comprehensive civil construction services for industrial facilities, commercial buildings, and large-scale infrastructure projects. Our team of experienced engineers and construction professionals ensures every project meets the highest standards of quality, safety, and efficiency.",
+      "features": [
+        "Structural Design & Engineering",
+        "Project Management & Planning",
+        "Quality Control & Assurance",
+        "Safety Compliance & Protocols",
+        "Material Procurement & Management",
+        "Timely Project Delivery"
+      ],
+      "process": [
+        { "step": 1, "title": "Consultation & Planning", "description": "Initial assessment and project planning" },
+        { "step": 2, "title": "Design & Engineering", "description": "Detailed structural design and engineering" },
+        { "step": 3, "title": "Material Procurement", "description": "Sourcing high-quality construction materials" },
+        { "step": 4, "title": "Construction Execution", "description": "On-site construction with quality control" },
+        { "step": 5, "title": "Quality Inspection", "description": "Comprehensive quality checks and testing" },
+        { "step": 6, "title": "Project Handover", "description": "Final delivery and client handover" }
+      ],
+      "stats": [
+        { "value": "200+", "label": "Projects Completed" },
+        { "value": "50+", "label": "Expert Engineers" },
+        { "value": "100%", "label": "Safety Record" }
+      ],
+      "testimonials": [
+        {
+          "name": "John Smith",
+          "position": "CEO, Industrial Corp",
+          "content": "Their construction team delivered our new facility ahead of schedule with exceptional quality. Highly professional and reliable.",
+          "rating": 5
+        },
+        {
+          "name": "Sarah Johnson",
+          "position": "Project Manager, BuildTech",
+          "content": "The attention to detail and commitment to safety standards is impressive. They exceeded our expectations at every stage.",
+          "rating": 5
+        }
+      ],
+      "faq": [
+        {
+          "question": "How long does a typical construction project take?",
+          "answer": "Project timelines vary based on scope and complexity. Small projects may take 3-6 months, while large-scale facilities can take 12-24 months."
+        },
+        {
+          "question": "Do you provide post-construction maintenance?",
+          "answer": "Yes, we offer comprehensive maintenance packages to ensure your facility remains in optimal condition after completion."
+        }
+      ]
+    },
+    "welding": {
+      "title": "Welding Services",
+      "description": "Professional welding solutions with advanced techniques and certified welders ensuring durable, safe, and reliable joints.",
+      "fullDescription": "Our certified welding services utilize state-of-the-art equipment and techniques including TIG, MIG, and arc welding. We serve various industries with precision welding for structural steel, pipelines, machinery, and custom fabrication projects.",
+      "features": [
+        "TIG/MIG/Arc Welding",
+        "Stainless Steel & Aluminum",
+        "Structural Steel Welding",
+        "Pipeline Welding",
+        "Quality Testing & Inspection",
+        "Certified Welders"
+      ],
+      "process": [
+        {
+          "step": 1,
+          "title": "Material Assessment",
+          "description": "Evaluate materials and welding requirements"
+        },
+        {
+          "step": 2,
+          "title": "Technique Selection",
+          "description": "Choose appropriate welding method"
+        },
+        {
+          "step": 3,
+          "title": "Surface Preparation",
+          "description": "Clean and prepare surfaces for welding"
+        },
+        {
+          "step": 4,
+          "title": "Precision Welding",
+          "description": "Execute welding with precision"
+        },
+        {
+          "step": 5,
+          "title": "Quality Testing",
+          "description": "Non-destructive testing and inspection"
+        },
+        {
+          "step": 6,
+          "title": "Finishing & Protection",
+          "description": "Surface finishing and corrosion protection"
+        }
+      ],
+      "stats": [
+        { "value": "5000+", "label": "Welding Projects" },
+        { "value": "30+", "label": "Certified Welders" },
+        { "value": "ASME", "label": "Certified" }
+      ],
+      "testimonials": [
+        {
+          "name": "Mike Thompson",
+          "position": "Plant Supervisor, MetalWorks Inc",
+          "content": "Exceptional welding quality and precision. Their certified welders delivered perfect joints every time.",
+          "rating": 5
+        }
+      ]
+    },
+    "firefighting": {
+      "title": "Firefighting Systems",
+      "description": "Comprehensive fire protection systems design, installation, and maintenance.",
+      "fullDescription": "We design, install, and maintain complete fire protection systems for industrial facilities, commercial buildings, and residential complexes. Our solutions include fire detection, alarm systems, suppression systems, and emergency response planning.",
+      "features": [
+        "Fire Detection Systems",
+        "Alarm & Notification Systems",
+        "Fire Suppression Systems",
+        "Emergency Lighting",
+        "Regular Maintenance",
+        "Safety Compliance"
+      ],
+      "process": [
+        { "step": 1, "title": "Risk Assessment", "description": "Evaluate fire hazards and requirements" },
+        { "step": 2, "title": "System Design", "description": "Design customized fire protection system" },
+        { "step": 3, "title": "Equipment Installation", "description": "Install fire detection and suppression equipment" },
+        { "step": 4, "title": "Testing & Commissioning", "description": "Thorough testing and system activation" },
+        { "step": 5, "title": "Training", "description": "Staff training on system operation" },
+        { "step": 6, "title": "Maintenance", "description": "Regular maintenance and inspections" }
+      ],
+      "stats": [
+        { "value": "300+", "label": "Systems Installed" },
+        { "value": "99.9%", "label": "Reliability Rate" },
+        { "value": "24/7", "label": "Support" }
+      ]
+    },
+    "security-electrical": {
+      "title": "Security & Electrical",
+      "description": "Integrated security and electrical systems providing smart facility management.",
+      "fullDescription": "We provide integrated security and electrical solutions including CCTV surveillance, access control systems, electrical wiring, power distribution, and smart building automation for enhanced safety and efficiency.",
+      "features": [
+        "CCTV Surveillance Systems",
+        "Access Control Solutions",
+        "Electrical Wiring & Panels",
+        "Power Distribution",
+        "Smart Automation",
+        "24/7 Monitoring"
+      ],
+      "process": [
+        { "step": 1, "title": "Site Assessment", "description": "Evaluate security and electrical needs" },
+        { "step": 2, "title": "System Design", "description": "Design integrated security and electrical system" },
+        { "step": 3, "title": "Equipment Installation", "description": "Install cameras, access control, and electrical systems" },
+        { "step": 4, "title": "Integration", "description": "Integrate all systems for seamless operation" },
+        { "step": 5, "title": "Testing", "description": "Comprehensive system testing" },
+        { "step": 6, "title": "Training & Handover", "description": "Client training and system handover" }
+      ]
+    },
+    "sandblasting-coating": {
+      "title": "Sandblasting & Coating",
+      "description": "Surface preparation and protective coating services for harsh environments.",
+      "fullDescription": "Our sandblasting and coating services protect industrial equipment, structures, and machinery from corrosion, wear, and environmental damage. We use advanced techniques and high-quality materials for long-lasting protection.",
+      "features": [
+        "Surface Preparation",
+        "Abrasive Blasting",
+        "Protective Coatings",
+        "Corrosion Prevention",
+        "Quality Inspection",
+        "Custom Solutions"
+      ],
+      "process": [
+        { "step": 1, "title": "Surface Assessment", "description": "Evaluate surface condition and requirements" },
+        { "step": 2, "title": "Preparation", "description": "Clean and prepare surfaces" },
+        { "step": 3, "title": "Sandblasting", "description": "Apply abrasive blasting for optimal adhesion" },
+        { "step": 4, "title": "Coating Application", "description": "Apply protective coatings" },
+        { "step": 5, "title": "Curing", "description": "Allow proper curing time" },
+        { "step": 6, "title": "Quality Check", "description": "Inspect finished surface quality" }
+      ]
+    },
+    "manpower-rental": {
+      "title": "Manpower Solutions",
+      "description": "Reliable manpower solutions providing skilled professionals for industrial operations.",
+      "fullDescription": "We provide skilled manpower solutions for various industrial sectors including construction, manufacturing, maintenance, and operations. Our workforce includes certified professionals, technicians, and skilled laborers ready to meet your project needs.",
+      "features": [
+        "Skilled Professionals",
+        "Certified Technicians",
+        "Flexible Staffing",
+        "Quality Assurance",
+        "Timely Deployment",
+        "Continuous Support"
+      ],
+      "process": [
+        { "step": 1, "title": "Requirement Analysis", "description": "Understand client manpower needs" },
+        { "step": 2, "title": "Candidate Selection", "description": "Select qualified professionals" },
+        { "step": 3, "title": "Screening", "description": "Thorough background and skill checks" },
+        { "step": 4, "title": "Deployment", "description": "Deploy staff to project site" },
+        { "step": 5, "title": "Performance Monitoring", "description": "Monitor and evaluate performance" },
+        { "step": 6, "title": "Continuous Support", "description": "Provide ongoing support and replacements" }
+      ]
     }
   },
-  "cta": {
-    "title": "Ready to Start Your Project?",
-    "subtitle": "Contact our expert team today and let's discuss how we can bring your industrial vision to life",
-    "callNow": "Call Now",
-    "emailUs": "Email Us",
-    "features": ["24/7 Support", "Global Reach", "Quality Guaranteed"]
-  },
 
-
-
-   "_comment": "This section are the contact  us page ",
-
-  "contact": {
-    "title": "Contact Us",
-    "description": "Feel free to reach out to us via any of the methods below.",
-    "address": {
-      "title": "Address",
-      "text": "123 Main Street, New York, NY"
+  "_comment": "Common Components - Used Across Multiple Pages",
+  "common": {
+    "tabs": {
+      "overview": "Overview",
+      "features": "Features",
+      "process": "Process",
+      "testimonials": "Testimonials",
+      "faq": "FAQ"
     },
-    "email": {
-      "title": "Email",
-      "text": "contact@example.com"
+    "buttons": {
+      "getQuote": "Get Free Quote",
+      "downloadBrochure": "Download Brochure",
+      "callNow": "Call Now",
+      "sendEmail": "Send Email",
+      "moreServices": "More Services",
+      "backToServices": "Back to Services"
     },
-    "phone": {
-      "title": "Phone",
-      "text": "+1 (555) 123-4567"
+    "headings": {
+      "aboutService": "About Our  Service",
+      "whyChooseUs": "Why Choose Us",
+      "ourCapabilities": "Our Capabilities",
+      "ourProcess": "Our Process",
+      "clientTestimonials": "Client Testimonials",
+      "faq": "Frequently Asked Questions",
+      "readyToStart": "Ready to Get Started?"
     },
-    "hours": {
-      "title": "Business Hours",
-      "text": "Mon-Fri: 9:00 AM - 5:00 PM"
+    "text": {
+      "serviceNotFound": "Service Not Found",
+      "comprehensiveSolutions": "Comprehensive solutions tailored to meet your specific requirements",
+      "stepByStepApproach": "Step-by-step approach ensuring quality and efficiency",
+      "whatClientsSay": "What our clients say about our {service} service",
+      "commonQuestions": "Common questions about our {service} service",
+      "freeConsultation": "Contact us today for a free consultation and let's discuss how we can help with your {service} needs.",
+      "available247": "Available 24/7",
+      "satisfaction": "100% Satisfaction",
+      "certifiedProfessionals": "Certified Professionals",
+      "featuredProject": "Featured Project",
+      "clickToExplore": "Click to explore",
+      "photos": "{count} Photos"
     },
-    "contactCards": [
-      {
-        "title": "Call Us",
-        "phone": "+971 4 123 4567",
-        "subtitle": "Mon - Fri: 8:00 AM - 6:00 PM"
-      },
-      {
-        "title": "Email Us",
-        "email": "info@company.com",
-        "subtitle": "24/7 Support Available"
-      },
-      {
-        "title": "Visit Us",
-        "location": "Dubai, UAE",
-        "subtitle": "3 Office Locations"
-      }
-    ],
-    "form": {
-      "name": "Your Name",
-      "company": "Company",
-      "email": "Email",
-      "phone": "Phone",
-      "service": "Service Interest",
-      "selectService": "Select a service",
-      "message": "Message",
-      "placeholderName": "John Doe",
-      "placeholderCompany": "Company Name",
-      "placeholderEmail": "john@example.com",
-      "placeholderPhone": "+971 XX XXX XXXX",
-      "placeholderMessage": "Tell us about your project...",
-      "submit": "Send Message",
-      "success": "Message Sent!"
-    },
-    "officesTitle": "Our Offices",
-    "faqsTitle": "Frequently Asked Questions",
-    "faqs": [
-      {
-        "question": "How quickly can you start a project?",
-        "answer": "We typically begin projects within 2-3 weeks after contract signing, depending on project complexity and material availability."
-      },
-      {
-        "question": "Do you provide project warranties?",
-        "answer": "Yes, all our projects come with comprehensive warranties ranging from 1-5 years, depending on service type."
-      },
-      {
-        "question": "Can you work with international clients?",
-        "answer": "Absolutely! We have experience working with clients globally and can manage international projects efficiently."
-      },
-      {
-        "question": "What industries do you serve?",
-        "answer": "We serve various industries including manufacturing, oil & gas, construction, logistics, and more."
-      }
-    ]
-  },
-
-
-   "_comment": "This section are the  services details page page "
-
-
-
-
-
-
-
-
+    "features": {
+      "industryExpertise": "Industry-leading expertise with years of experience",
+      "customizedSolutions": "Customized solutions tailored to your specific needs",
+      "qualityCommitment": "Commitment to quality, safety, and timely delivery",
+      "competitivePricing": "Competitive pricing with transparent cost structures",
+      "certifiedProfessionals": "Certified Professionals",
+      "provenTrackRecord": "Proven Track Record",
+      "qualityAssurance": "Quality Assurance"
+    }
+  }
 }

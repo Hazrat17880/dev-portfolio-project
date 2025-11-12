@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaGlobe, FaChevronDown, FaBars, FaTimes } from "react-icons/fa";
-import LogoImage from "../../assets/Images/logo.PNG";
+import LogoImage from "../../assets/Images/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 

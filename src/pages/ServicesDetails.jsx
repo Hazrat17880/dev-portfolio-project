@@ -778,7 +778,7 @@ const ServiceDetail = () => {
                       "common.headings.aboutService",
                       "About Our Service",
                       // { service: service.title }
-                    )}
+                    )} 
                   </h2>
                   <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                     {service.fullDescription || service.description}

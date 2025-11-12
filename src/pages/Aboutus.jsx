@@ -16,7 +16,7 @@ import {
   Mail,
   Phone,
 } from "lucide-react";
-import facilityImage from "../assets/images/aboutus/faculty.jpg";
+import facilityImage from "../assets/Images/aboutus/faculty.jpg"
 import { useTranslation } from "react-i18next";
 
 const AboutPage = () => {
