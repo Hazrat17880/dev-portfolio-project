@@ -72,29 +72,32 @@ const Footer = () => {
           {/* Left Column */}
     {/* Left Column */}
 <div className="space-y-6">
-  <div
-    className="flex items-center cursor-pointer group text-center px-1 space-x-3"
-    onClick={() => handleNavClick("home")}
-  >
-    {/* Logo on the left */}
-    <div className="relative h-12 w-12 sm:h-12 sm:w-12 rounded-md overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5">
-      <img
-        src={companyLogo}
-        alt={t("footer.companyName")}
-        className="w-full h-full object-contain"
-      />
-    </div>
-
-    {/* Text next to the logo */}
-    <div className="flex flex-col leading-none">
-      <h1 className="text-[12px] sm:text-sm font-semibold text-white tracking-tight m-0 p-0">
-        شركة وحيد لبنان
-      </h1>
-      <h2 className="text-[11px] sm:text-sm font-semibold text-blue-900 tracking-tight m-0 p-0">
-        <span className="text-red-600">A</span> 1 CONTRACT
-      </h2>
-    </div>
+ <div
+  className="flex flex-col items-start cursor-pointer group text-center px-1 space-y-1"
+  onClick={() => handleNavClick("home")}
+>
+  {/* Logo on the top */}
+  <div className="relative h-12 w-12 sm:h-12 sm:w-12 rounded-md overflow-hidden transition-all duration-300 group-hover:-translate-y-0.5">
+    <img
+      src={companyLogo}
+      alt={t("footer.companyName")}
+      className="w-full h-full object-contain"
+    />
   </div>
+
+  {/* Text below the logo */}
+  <div className="flex flex-col leading-none">
+    <h1 className="text-[12px] sm:text-sm font-semibold text-white tracking-tight m-0 p-0">
+      شركة وحيد لبنان
+    </h1>
+    <h2 className="text-[11px] sm:text-sm font-semibold tracking-tight m-0 p-0">
+      <span className="text-red-600">A</span>
+      <span className="text-blue-900">1</span>
+      <span className="text-white"> CONTRACT</span>
+    </h2>
+  </div>
+</div>
+
 
   {/* Company description */}
   <p className="text-gray-300 leading-relaxed max-w-md">
@@ -205,7 +208,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter & Certifications */}
-          <div>
+          {/* <div>
             <h4 className="text-lg font-semibold mb-4 flex items-center">
               <Shield className="h-5 w-5 mr-2 text-blue-400" />
               {t("footer.stayUpdated")}
@@ -240,31 +243,44 @@ const Footer = () => {
                 <p className="text-xs text-gray-400">{t("footer.isoDesc")}</p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Bottom Footer */}
-      <div className="border-t border-gray-800">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
-              © {currentYear} {t("footer.companyName")}. {t("footer.rights")}
-            </div>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                {t("footer.privacy")}
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                {t("footer.terms")}
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                {t("footer.sitemap")}
-              </a>
-            </div>
-          </div>
-        </div>
+   <div className="border-t border-gray-800">
+  <div className="container mx-auto px-4 py-3">
+    <div className="flex justify-between items-center">
+      {/* Copyright */}
+      <p className="text-gray-400 text-sm">
+        © {currentYear} {t("footer.companyName")}. {t("footer.rights")}
+      </p>
+
+      {/* Footer Links */}
+      <div className="flex space-x-6 text-sm">
+        <a
+          href="#"
+          className="text-gray-400 hover:text-white transition-colors duration-300"
+        >
+          {t("footer.privacy")}
+        </a>
+        <a
+          href="#"
+          className="text-gray-400 hover:text-white transition-colors duration-300"
+        >
+          {t("footer.terms")}
+        </a>
+        <a
+          href="#"
+          className="text-gray-400 hover:text-white transition-colors duration-300"
+        >
+          {t("footer.sitemap")}
+        </a>
       </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Floating Contact Button */}
       <motion.a

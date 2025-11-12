@@ -134,9 +134,13 @@ const Navbar = () => {
                 <h1 className="text-[12px] sm:text-sm font-semibold text-gray-900 tracking-tight m-0 p-0">
                   شركة وحيد لبنان
                 </h1>
-                <h2 className="text-[11px] sm:text-sm font-semibold text-blue-900 tracking-tight m-0 p-0">
-                  <span className="text-red-600">A</span> 1 CONTRACTOR
-                </h2>
+                <h2 className="text-[11px] sm:text-sm font-semibold tracking-tight m-0 p-0">
+  <span className="text-red-600">A</span>
+  <span className="text-blue-900">1</span>
+  <span className="text-black"> CONTRACTOR</span>
+</h2>
+
+
               </div>
             </div>
 

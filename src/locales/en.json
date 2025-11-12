@@ -22,7 +22,7 @@
     "subscribe": "Subscribe",
     "isoTitle": "ISO 9001 Certified",
     "isoDesc": "Quality Management",
-    "companyName": "A1 Constructing",
+    "companyName": "A1 Contractor",
     "tagline": "Industrial Excellence",
     "description": "Leading industrial construction company with over 15 years of experience in delivering high-quality construction, safety systems, and maintenance solutions across various industries.",
     "phone": "+971 4 123 4567",
@@ -43,7 +43,7 @@
 
   "_comment": "Home Page Testimonials",
   "homeTestimonials": {
-    "sectionTitle": "Trusted by Industry",
+    "sectionTitle": "Industrial",
     "sectionHighlight": "Clients",
     "sectionSubtitle": "Discover why leading companies choose us for their industrial construction needs. Quality, reliability, and excellence in every project.",
     "anjali": {
