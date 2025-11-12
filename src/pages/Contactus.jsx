@@ -419,7 +419,7 @@ const ContactPage = () => {
         </div>
       </section>
     </div>
-  );
+  ); 
 };
 
 export default ContactPage;

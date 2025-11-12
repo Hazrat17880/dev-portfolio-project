@@ -108,7 +108,7 @@
 
 
 
-  "_comment": "Contact Page Sections",
+    "_comment": "Contact Page Sections",
   "contact": {
     "title": "Contact Us",
     "description": "Get in touch with our expert team to discuss your industrial construction needs",
@@ -175,8 +175,59 @@
       "Quick Response Time",
       "Expert Advice"
     ]
-  }
-,
+  },
+
+  "stats": {
+    "yearsExperience": "Years Experience",
+    "professionals": "Professionals",
+    "projects": "Projects Completed", 
+    "awards": "Awards Won"
+  },
+
+  "story": {
+    "title": "Our Story",
+    "p1": "Founded in 2008, A1 Constructing has been at the forefront of industrial construction, delivering innovative solutions across various sectors including manufacturing, oil & gas, and infrastructure.",
+    "p2": "Our journey began with a simple vision: to build industrial facilities that not only meet but exceed client expectations through superior craftsmanship, cutting-edge technology, and unwavering commitment to safety.",
+    "quality": "Quality Assurance",
+    "growth": "Sustainable Growth"
+  },
+
+  "values": {
+    "title": "Our Core Values",
+    "subtitle": "The principles that guide everything we do",
+    "safety": "Safety First",
+    "safetyDesc": "Prioritizing the well-being of our team, clients, and communities in every project.",
+    "quality": "Quality Excellence", 
+    "qualityDesc": "Delivering superior craftsmanship and materials in every aspect of our work.",
+    "integrity": "Integrity",
+    "integrityDesc": "Building trust through transparency, honesty, and ethical business practices.",
+    "innovation": "Innovation",
+    "innovationDesc": "Embracing new technologies and methods to deliver better solutions."
+  },
+
+  "team": {
+    "title": "Our Leadership Team",
+    "subtitle": "Experienced professionals driving our success",
+    "members": {
+      "john": {
+        "position": "Chief Executive Officer",
+        "experience": "20+ years in construction"
+      },
+      "sarah": {
+        "position": "Operations Director", 
+        "experience": "15+ years in project management"
+      },
+      "michael": {
+        "position": "Technical Director",
+        "experience": "18+ years in engineering"
+      },
+      "emily": {
+        "position": "Safety Manager",
+        "experience": "12+ years in industrial safety"
+      }
+    }
+  },
+
 
 
 
